@@ -1,21 +1,25 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
+import React from "react";
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Message from "./pages/Message";
+import Profile from "./pages/Profile";
+import Request from "./pages/Request";
 
 function App() {
   return (
     <Router>
-    <div className="pt-20">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </div>
+      <div className="pt-20">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/message" element={<Message />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/request" element={<Request />} />
+        </Routes>
+      </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

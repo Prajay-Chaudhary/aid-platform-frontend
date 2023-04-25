@@ -44,6 +44,12 @@ function Navbar() {
                 Requests
               </Link>
             </li>
+            <li>
+              <Link to="/chat" className="text-gray-400 hover:text-gray-100">
+                Chat
+              </Link>
+            </li>
+
           </ul>
         </div>
         <div>

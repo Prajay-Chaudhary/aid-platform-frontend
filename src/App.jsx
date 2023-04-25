@@ -5,8 +5,9 @@ import Home from "./pages/Home";
 import Message from "./pages/Message";
 import Profile from "./pages/Profile";
 import Request from "./pages/Request";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
-function App() {
+function App() { 
   return (
     <Router>
       <div className="pt-20">

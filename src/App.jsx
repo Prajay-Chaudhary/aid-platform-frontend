@@ -6,7 +6,8 @@ import Message from "./pages/Message";
 import Profile from "./pages/Profile";
 import Request from "./pages/Request";
 import Chat from "./pages/Chat";
-import PrivateRoute from "./components/routing/PrivateRoute";
+//import PrivateRoute from "./components/routing/PrivateRoute";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/request" element={<Request />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/loginpage" element={<LoginPage />} />
         </Routes>
       </div>
     </Router>

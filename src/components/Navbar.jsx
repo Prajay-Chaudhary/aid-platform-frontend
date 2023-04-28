@@ -49,6 +49,11 @@ function Navbar() {
                 Chat
               </Link>
             </li>
+            <li>
+              <Link to="/loginpage" className="text-gray-400 hover:text-gray-100">
+                Login
+              </Link>
+            </li>
 
           </ul>
         </div>

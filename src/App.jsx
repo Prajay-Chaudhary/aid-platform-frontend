@@ -1,13 +1,13 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Message from "./pages/Message";
-import Profile from "./pages/Profile";
-import Request from "./pages/Request";
-import Chat from "./pages/Chat";
-//import PrivateRoute from "./components/routing/PrivateRoute";
-import LoginPage from "./pages/LoginPage";
+import React from "react"
+import Navbar from "./components/Navbar"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import Message from "./pages/Message"
+import Profile from "./pages/Profile"
+import Request from "./pages/Request"
+import Chat from "./pages/Chat"
+//import PrivateRoute from "./components/routing/PrivateRoute"
+import LoginPage from "./pages/LoginPage"
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         </Routes>
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,28 +1,30 @@
 import React from "react"
-import Navbar from "./components/Navbar"
+import TopBar from "./components/Topbar"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
-import Message from "./pages/Message"
 import Profile from "./pages/Profile"
 import Request from "./pages/Request"
 import Chat from "./pages/Chat"
-//import PrivateRoute from "./components/routing/PrivateRoute"
-import LoginPage from "./pages/LoginPage"
+import Signup from "./pages/Signup"
+import Login from "./pages/Login"
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 function App() {
+  const { user } = useContext(Context);
   return (
     <Router>
-      <div className="pt-20">
-        <Navbar />
+      <>
+        <TopBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/message" element={<Message />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/request" element={<Request />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/loginpage" element={<LoginPage />} />
+          <Route exact path="/" element={<Home />} />
+          <Route path="/signup" element={user ? <Home /> : <Signup />} />
+          <Route path="/login" element={user ? <Home /> : <Login />} />
+          <Route path="/profile" element={user ? <Profile /> : <Signup />} />
+          <Route path="/request" element={user ? <Request /> : <Signup />} />
+          <Route path="/chat" element={user ? <Chat /> : <Signup />} />
         </Routes>
-      </div>
+      </>
     </Router>
   )
 }

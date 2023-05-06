@@ -3,7 +3,6 @@ import React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import App from "./App";
 import 'flowbite';
-import { ContextProvider } from "./context/Context";
 
 const container = document.getElementById("root");
 
@@ -12,8 +11,5 @@ const root = ReactDOMClient.createRoot(container);
 
 // Initial render: Render an element to the root.
 root.render(
-  <ContextProvider>
-    <App />
-  </ContextProvider>
-
+  <App />
 );

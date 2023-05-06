@@ -1,78 +1,47 @@
-
-// const Signup = () => {
-//   const formRef = useRef()
-//   const [error, setError] = useState(false)
-//   const signup = async (userInfo) => {
-//     //signup post request
-//     const url = "http://127.0.0.1:3001/signup"
-//     try {
-//       const response = await fetch(url, {
-//         method: 'post',
-//         headers: {
-//           "content-type": 'application/json',
-//           "accept": "application/json"
-//         },
-//         body: JSON.stringify(userInfo)
-//       })
-//       const data = await response.json()
-//       if (!response.ok) throw data.error
-//       localStorage.setItem('token', response.headers.get("Authorization"))
-//       window.location.replace("/login"); //redirect to login page
-//     } catch (error) {
-//       setError(true)
-//     }
-//   }
-//   //handle submit button
-//   const handleSubmit = e => {
-//     e.preventDefault()
-//     setError(false)
-//     const formData = new FormData(formRef.current)
-//     const data = Object.fromEntries(formData)
-//     const userInfo = {
-//       "user": { email: data.email, password: data.password, first_name: data.first_name, last_name: data.last_name, username: data.username }
-//     }
-//     signup(userInfo)
-//     e.target.reset()
-//   }
-import axios from "axios";
 import React, { useState } from 'react';
 import { Label, TextInput, Button, Checkbox, FileInput } from 'flowbite-react'
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post("http://127.0.0.1:3001/signup", {
-        // username,
-        // email,
-        // password,
-        // firstname,
-        // lastname
-        email,
-        first_name: firstname,
-        last_name: lastname,
-        password: password,
-        username: username
-
-      }, {
+      const res = await fetch('http://localhost:3001/signup', {
+        method: 'POST',
         headers: {
-          "content-type": 'application/json',
-          "accept": "application/json"
-        }
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: {
+            username,
+            email,
+            password,
+            first_name: firstName,
+            last_name: lastName
+          }
+        })
       });
-      res.data && window.location.replace("http://127.0.0.1:3001/login");
+      const json = await res.json();
+      console.log(json);
+      navigate('/login'); // Navigate to the login page
+      // Redirect to login page or any other page you want
     } catch (err) {
+      console.error(err);
       setError(true);
     }
   };
+
+
+
   return (
     <>
       <div className="w-full h-screen flex items-center justify-center m-auto">
@@ -88,6 +57,7 @@ const Signup = () => {
               </div>
               <TextInput
                 id="email1"
+                name="email1"
                 type="email"
                 placeholder=""
                 onChange={(e) => setEmail(e.target.value)}
@@ -102,9 +72,10 @@ const Signup = () => {
               </div>
               <TextInput
                 id="firstname"
+                name="firstname"
                 type="text"
                 placeholder=""
-                onChange={(e) => setFirstname(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
             <div>
@@ -116,9 +87,10 @@ const Signup = () => {
               </div>
               <TextInput
                 id="lastname"
+                name="lastname"
                 type="text"
                 placeholder=""
-                onChange={(e) => setLastname(e.target.value)}
+                onChange={(e) => setLastName(e.target.value)}
 
               />
             </div>
@@ -132,6 +104,7 @@ const Signup = () => {
               </div>
               <TextInput
                 id="username"
+                name="username"
                 type="text"
                 placeholder=""
                 onChange={(e) => setUsername(e.target.value)}
@@ -147,7 +120,8 @@ const Signup = () => {
                 />
               </div>
               <TextInput
-                id="password1"
+                id="password"
+                name="password"
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
 
@@ -161,7 +135,8 @@ const Signup = () => {
                 />
               </div>
               <TextInput
-                id="password1"
+                id="password"
+                name="password"
                 type="password"
 
               />

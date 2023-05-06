@@ -8,7 +8,7 @@ const TopBar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem('user');
-    setUserData(null);
+    //setUserData(null);
     navigate('/login'); // Navigate to the login page after logout
   }
 

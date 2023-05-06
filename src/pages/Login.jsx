@@ -20,7 +20,7 @@ function Login() {
       const user = data.status.user;
       localStorage.setItem('user', JSON.stringify(user));
       setUserData(user);
-      navigate('/'); // Navigate to the home page
+      navigate('/request'); // Navigate to the request page
     } else {
       console.error('Login failed');
     }

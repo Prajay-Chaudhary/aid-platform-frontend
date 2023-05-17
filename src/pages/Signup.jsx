@@ -45,7 +45,7 @@ const Signup = () => {
   return (
     <>
       <div className="w-full h-screen flex items-center justify-center m-auto">
-        <div className="max-w-lg w-full m-auto mt-10 p-5 bg-white border rounded">
+        <div className="max-w-lg w-full m-auto mt-10 p-5 bg-white border rounded drop-shadow-md hover:drop-shadow-2xl">
           <h2 className="font-medium text-2xl text-center">Signup</h2>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div>
@@ -164,7 +164,7 @@ const Signup = () => {
             </Button>
             {error && < span className='text-red-600 mt-1'>Something went wrong!</span>}
           </form>
-          <div className='mt-4'>Already registered, <a href="/login" >Login</a> here.</div>
+          <div className='mt-4'>Already registered, <a href="/login" className="no-underline hover:underline text-blue-500" >Login</a> here.</div>
         </div>
       </div >
     </>

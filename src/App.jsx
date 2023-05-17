@@ -10,10 +10,7 @@ import Chat from './pages/Chat';
 import UserContext from './context/UserContext';
 
 function App() {
-  const user = JSON.parse(localStorage.getItem('user'));
-
-
-  console.log(user);
+  const user = JSON.parse(sessionStorage.getItem('token'));
 
   return (
     <UserContext.Provider value={{ user }}>
@@ -22,8 +19,8 @@ function App() {
           <TopBar />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={user ? <Request /> : <Signup />} />
+            <Route path="/login" element={user ? <Request /> : <Login />} />
             <Route path="/profile" element={user ? <Profile /> : <Login />} />
             <Route path="/request" element={user ? <Request /> : <Login />} />
             <Route path="/chat" element={user ? <Chat /> : <Login />} />

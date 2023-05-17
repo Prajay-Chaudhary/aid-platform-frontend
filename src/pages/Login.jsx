@@ -8,6 +8,7 @@ function Login() {
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
 
+  //make post request for login
   const handleLogin = async (email, password) => {
     const response = await fetch('http://localhost:3001/login', {
       method: 'POST',
@@ -17,9 +18,14 @@ function Login() {
 
     if (response.ok) {
       const data = await response.json();
-      const user = data.status.user;
-      localStorage.setItem('user', JSON.stringify(user));
-      setUserData(user);
+      // get token front my back-end throught API and save it to the sessionStorage
+      const token = response.headers.get("Authorization")?.split(' ')[1]
+      sessionStorage.setItem('token', token)
+
+      console.log("current_user daa with token :", token);
+      const user_token = data.status.token;
+      sessionStorage.setItem('token', JSON.stringify(token));
+      setUserData(user_token);
       navigate('/request'); // Navigate to the request page
     } else {
       console.error('Login failed');

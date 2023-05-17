@@ -5,6 +5,10 @@ module.exports = {
 
   theme: {
     extend: {},
+    fontFamily: {
+      'sans': ['system-ui'],
+    }
+
   },
   variants: {
     extend: {},

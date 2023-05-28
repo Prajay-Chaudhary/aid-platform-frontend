@@ -14,16 +14,21 @@ function Login() {
     });
 
     if (response.ok) {
-      const data = await response.json();
       // get token front my back-end throught API and save it to the sessionStorage
       const token = response.headers.get("Authorization")?.split(' ')[1]
-      sessionStorage.setItem('token', token)
 
-      console.log("current_user daa with token :", token);
+      const data = await response.json();
+      sessionStorage.setItem('token', token)
+      // set user data to session storage by converting it to a JSON string
+      sessionStorage.setItem('user', JSON.stringify(data.user))
+
       const user_token = data.status.token;
+
+      // set token to session storage by converting it to a JSON string
       sessionStorage.setItem('token', JSON.stringify(token));
       setUserData(user_token);
       window.location = '/request'; // Navigate to the request page
+
     } else {
       console.error('Login failed');
     }
@@ -34,6 +39,7 @@ function Login() {
       <LoginForm handleLogin={handleLogin} />
     </UserContext.Provider>
   );
+
 }
 
 export default Login;

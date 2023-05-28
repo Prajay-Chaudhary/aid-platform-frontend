@@ -8,8 +8,8 @@ import { Avatar } from 'flowbite-react'
 function ConversationPage() {
   const [messages, setMessages] = useState([]);
   const [reloadMessages, setReloadMessages] = useState(false);
-
-  const current_user = JSON.parse(sessionStorage.getItem('token'));
+  const token = JSON.parse(sessionStorage.getItem('token'));
+  const current_user = JSON.parse(sessionStorage.getItem('user'));
   const { user_id } = useParams();
   const messagesEndRef = useRef(null); // Create a ref for the end of the message list & used to scroll to the latest message in the message list
 
@@ -23,7 +23,7 @@ function ConversationPage() {
           headers: {
             'content-type': 'application/json',
             'accept': 'application/json',
-            'Authorization': `Bearer ${current_user}` // send authorized token to the server
+            'Authorization': `Bearer ${token}` // send authorized token to the server
           }
         });
 
@@ -36,7 +36,7 @@ function ConversationPage() {
       }
     };
     getMessages();
-  }, [current_user, user_id, reloadMessages]);
+  }, [user_id, reloadMessages]);
 
   useEffect(() => {
     // Scroll to the latest message when the component mounts or when new messages are received
@@ -63,7 +63,7 @@ function ConversationPage() {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': `Bearer ${current_user}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(data)
     });
@@ -103,12 +103,12 @@ function ConversationPage() {
 
             {/* creates a new array with the elements of messages in reverse order.
             Then, the map function is used to iterate over the reversed array and render the messages accordingly */}
-            {messages.slice(0).reverse().map((message) => (
-              <div key={message.id}>
-                {message.sender_id === current_user.id ? <MyMessage message={message.message_body} /> : <OtherMessage message={message.message_body} />}
-              </div>
+            {messages.slice(0).reverse().map((message) =>
+            (<div key={message.id}>
+              {message.sender_id === current_user.id ? <MyMessage message={message.message_body} /> : <OtherMessage message={message.message_body} />}
+            </div>)
 
-            ))}
+            )}
             <div ref={messagesEndRef} /> {/* Use the ref to scroll to the latest message */}
 
           </div>

@@ -3,6 +3,12 @@ import landingPageImage from '../images/landingPageImage.png'
 import { Button } from 'flowbite-react'
 
 const Home = () => {
+  const current_user = JSON.parse(sessionStorage.getItem('token'))
+
+  if (current_user) {
+    window.location = '/request'
+  }
+
   return (
     <>
       <div className='md:flex justify-center h-screen mt-4 md:mt-0'>

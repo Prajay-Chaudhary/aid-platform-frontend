@@ -1,90 +1,141 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import { Button, TextInput } from 'flowbite-react';
+import MyMessage from './MyMessage';
+import OtherMessage from './OtherMessage';
+import { Avatar } from 'flowbite-react'
 
 function ConversationPage() {
   const [messages, setMessages] = useState([]);
-  const current_user = JSON.parse(sessionStorage.getItem('token'));
+  const [reloadMessages, setReloadMessages] = useState(false);
 
-  if (!current_user) {
-    return (
-      <div>We can not display any message now please select a conversation.</div>
-    )
-  }
+  const current_user = JSON.parse(sessionStorage.getItem('token'));
+  const { user_id } = useParams();
+  const messagesEndRef = useRef(null); // Create a ref for the end of the message list & used to scroll to the latest message in the message list
+
 
   useEffect(() => {
     // Get the conversation between the current user and the selected user
     const getMessages = async () => {
       try {
-        const res = await fetch('http://localhost:3001/messages/conversations', {
-          method: "get",
+        const res = await fetch(`http://localhost:3001/messages/conversation/${user_id}`, {
+          method: 'get',
           headers: {
             'content-type': 'application/json',
             'accept': 'application/json',
-            'Authorization': `Bearer ${current_user}` //send authorized token to the server 
+            'Authorization': `Bearer ${current_user}` // send authorized token to the server
           }
-        })
-        const result = await res.json()
+        });
+
+        const result = await res.json();
         setMessages(result);
-        console.log("conversations", result);
 
+        console.log('conversations', result);
       } catch (err) {
-        console.log("Error:", err)
+        console.log('Error:', err);
       }
-    }
+    };
+    getMessages();
+  }, [current_user, user_id, reloadMessages]);
 
-    getMessages()
+  useEffect(() => {
+    // Scroll to the latest message when the component mounts or when new messages are received
+    scrollToLatestMessage();
+  }, [messages]);
 
-  }, []);
+  const scrollToLatestMessage = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-
-
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const body = event.target.elements.body.value;
+    const { body } = event.target.elements;
 
-    // Send a new message to the selected user
-    fetch('http://localhost:3001/messages', {
+    const data = {
+      sender_id: current_user.id, // Include the sender_id based on the logged-in user
+      receiver_id: user_id,
+      body: body.value
+    };
+
+    //post request to create message
+    const res = await fetch('http://localhost:3001/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'accept': 'application/json',
-        'Authorization': `Bearer ${current_user}` //send authorized token to the server 
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${current_user}`
       },
-      body: JSON.stringify({
-        body: body
-      })
-    }).then(response => response.json())
-      .then(data => {
-        setMessages([...messages, data]);
-        event.target.elements.body.value = '';
-        console.log("data:", data);
-      });
+      body: JSON.stringify(data)
+    });
+
+    const response = await res.json();
+
+    if (res.ok) {
+      // Message successfully created
+      setReloadMessages(!reloadMessages);
+      body.value = '';
+    } else {
+      // Handle error response
+      console.log(response); // Check the error response for more details
+    }
   };
 
+
   return (
-    <>
-      <div className=''>
-        <h1 className='text-center font-bold'>Conversation with selected user</h1>
-        <ul>
-          <div>
-            {messages.map(message => (
-              <li key={message.id}>
-                {message.sender_id === current_user.id ? 'Me' : current_user.id}
-              </li>
-            ))}
+    user_id && (
+      <>
+        <div className="p-2 md:p-6 min-h-screen">
+
+          <div className="p-3 bg-white-400 rounded-lg shadow-lg">
+            <div className='flex space-x-2 justify-center'>
+              <div>
+                <Avatar
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+              </div>
+              <div>
+                <h1 className='font-bold text-red-600 text-2xl  mb-3'>{user_id}</h1>
+              </div>
+            </div>
           </div>
-        </ul>
-        <form className="fixed bottom-0 bg-purple-600 flex py-5 px-6 rounded-lg" onSubmit={handleFormSubmit}>
-          <input
-            id="messageInput"
-            name="body"
-            type="text"
-            className="flex-1 mr-3 py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-            placeholder="Type message..."
-          />
-          <button type="submit" className="px-4 py-2 bg-white text-red-600 rounded-lg">Send</button>
-        </form>
-      </div>
-    </>
+          <div className="message-list-container flex flex-col text-center h-screen overflow-y-auto">
+
+            {/* creates a new array with the elements of messages in reverse order.
+            Then, the map function is used to iterate over the reversed array and render the messages accordingly */}
+            {messages.slice(0).reverse().map((message) => (
+              <div key={message.id}>
+                {message.sender_id === current_user.id ? <MyMessage message={message.message_body} /> : <OtherMessage message={message.message_body} />}
+              </div>
+
+            ))}
+            <div ref={messagesEndRef} /> {/* Use the ref to scroll to the latest message */}
+
+          </div>
+          <form
+            className="sticky top-[100vh] bg-sky-500 flex py-5 px-6 rounded-lg drop-shadow-lg hover:drop-shadow-2xl"
+            onSubmit={handleFormSubmit}
+          >
+            <TextInput
+              id="messageInput"
+              name="body"
+              type="text"
+              className="flex-1 py-2 px-1 mr-2 rounded-lg"
+              placeholder="Type message..."
+              required={true}
+            />
+            <Button
+              type="submit"
+              size="lg"
+              gradientDuoTone="purpleToPink"
+              className='mt-1'
+            >
+              Send
+            </Button>
+          </form>
+        </div>
+      </>
+    )
   );
 }
 

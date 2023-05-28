@@ -24,6 +24,7 @@ function App() {
             <Route path="/profile" element={user ? <Profile /> : <Login />} />
             <Route path="/request" element={user ? <Request /> : <Login />} />
             <Route path="/chat" element={user ? <Chat /> : <Login />} />
+            <Route path="/chat/:user_id" element={user ? <Chat /> : <Login />} />
           </Routes>
         </>
       </Router>

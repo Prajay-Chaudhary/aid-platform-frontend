@@ -1,12 +1,9 @@
-// Login.js
 import React, { useState } from 'react';
 import UserContext from '../context/UserContext';
 import LoginForm from '../components/LoginForm';
-import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [userData, setUserData] = useState(null);
-  const navigate = useNavigate();
 
   //make post request for login
   const handleLogin = async (email, password) => {
@@ -26,7 +23,7 @@ function Login() {
       const user_token = data.status.token;
       sessionStorage.setItem('token', JSON.stringify(token));
       setUserData(user_token);
-      navigate('/request'); // Navigate to the request page
+      window.location = '/request'; // Navigate to the request page
     } else {
       console.error('Login failed');
     }

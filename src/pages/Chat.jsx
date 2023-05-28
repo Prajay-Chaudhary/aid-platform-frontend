@@ -2,12 +2,14 @@ import React from 'react'
 import ChatPage from '../components/Message/ChatPage'
 import ConversationPage from '../components/Message/ConversationPage'
 const Chat = () => {
-  console.log("test test chat")
   return (
     <>
-      <div className='flex'>
-        <div className='w-2/5'><ChatPage /></div>
-        <div className='w-3/5'><ConversationPage /></div>
+      <div>
+        <div className='md:flex bg-yellow-100 h-full w-screen md:m-0 rounded-lg'>
+          <div className='w-2/5 m-auto'><ChatPage /></div>
+          <div className="h-0 md:h-[1000px]  bg-green-700 w-0 md:w-[7px]"></div>
+          <div className='w-3/5 m-auto'><ConversationPage /></div>
+        </div>
       </div>
     </>
   )

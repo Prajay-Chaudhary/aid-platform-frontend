@@ -1,16 +1,14 @@
 import React from "react";
 import { Navbar, Avatar, Dropdown } from "flowbite-react";
-import { useNavigate } from 'react-router-dom';
 import Logo from '../images/Logo.png'
 
 
 const TopBar = () => {
   const user = JSON.parse(sessionStorage.getItem('token'));
-  const navigate = useNavigate();
   const handleLogout = () => {
     sessionStorage.removeItem('token');
     //setUserData(null);
-    navigate('/login'); // Navigate to the login page after logout
+    window.location = '/login'; // Navigate to the login page after logout
   }
 
   return (
@@ -55,9 +53,10 @@ const TopBar = () => {
             <Navbar.Toggle />
           </div>
           <Navbar.Collapse>
-            <Navbar.Link href="/" active={true}>
-              Home
-            </Navbar.Link>
+            {!user ?
+              <Navbar.Link href="/" active={true}>
+                Home
+              </Navbar.Link> : ""}
             <Navbar.Link href="/profile">
               Profile
             </Navbar.Link>

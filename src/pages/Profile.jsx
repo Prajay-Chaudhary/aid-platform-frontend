@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Profile() {
-  const user = JSON.parse(sessionStorage.getItem('token'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
 
   return (
     <>
@@ -9,7 +9,9 @@ function Profile() {
         <h1>Profile</h1>
         {user && (
           <div>
-            <h1>{user.name}</h1>
+            <h1>
+              <span>{user.first_name}</span> <span>{user.last_name}</span>
+            </h1>
             <h1>{user.email}</h1>
           </div>
         )}

@@ -4,7 +4,8 @@ import Logo from '../images/Logo.png'
 
 
 const TopBar = () => {
-  const user = JSON.parse(sessionStorage.getItem('token'));
+  const token = JSON.parse(sessionStorage.getItem('token'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
   const handleLogout = () => {
     sessionStorage.removeItem('token');
     //setUserData(null);
@@ -12,7 +13,7 @@ const TopBar = () => {
   }
 
   return (
-    user && (
+    token && (
       <>
         <Navbar fluid={true} rounded={true}>
           <Navbar.Brand href="">
@@ -22,16 +23,16 @@ const TopBar = () => {
               alt="Aid Platform"
             />
           </Navbar.Brand>
-          <div className="flex md:order-2">
+          <div className="flex md:order-2 z-40">
             <Dropdown
               arrowIcon={false}
               inline={true}
               label={<Avatar alt="User settings" img="" rounded={true} />}
             >
               <Dropdown.Header>
-                <span className="block text-sm text-bolder">
-                  {user.name}
-                </span>
+                <div className="block text-sm text-bolder">
+                  <span >{user.first_name}</span> <span >{user.last_name}</span>
+                </div>
                 <span className="block truncate text-sm font-medium">
                   {user.email}
                 </span>

@@ -1,9 +1,12 @@
 import React from 'react'
+import ShowMap from '../components/Map/ShowMap'
 
 const Request = () => {
   return (
     <>
-      <div>Request</div>
+      <div>
+        < ShowMap />
+      </div>
     </>
   )
 }

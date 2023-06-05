@@ -23,7 +23,7 @@ function ChatPage() {
 
         const result = await res.json();
         setAllUsers(result);
-        console.log('result:', result);
+        console.log('usersList:', result);
       } catch (err) {
         console.log('Error:', err);
       }
@@ -64,10 +64,10 @@ function ChatPage() {
           </div>
           <div className='text-center h-screen overflow-y-auto'>
             {allUsers &&
-              allUsers.map(({ id, interacted_user_id, interacted_fname, interacted_lname, message_body, time_ago }) => (
+              allUsers.map(({ id, interacted_user_id, interacted_fname, interacted_lname, message_body, time_ago }, index) => (
                 <Link
                   to={`/chat/${interacted_user_id}`}
-                  key={id}
+                  key={index}
                   className={`group block max-w-xs mx-0 md:mx-auto rounded-lg py-2 md:p-6 ${interacted_user_id === selectedUserId
                     ? 'ring-sky-900 bg-blue-300 border-solid border-2 border-sky-500'
                     : 'ring-slate-900/5 bg-white'

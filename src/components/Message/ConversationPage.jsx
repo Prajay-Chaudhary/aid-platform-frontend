@@ -8,6 +8,7 @@ import { Avatar } from 'flowbite-react'
 function ConversationPage() {
   const [messages, setMessages] = useState([]);
   const [reloadMessages, setReloadMessages] = useState(false);
+  const [name, setName] = useState("");
   const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
   const { user_id } = useParams();
@@ -95,7 +96,7 @@ function ConversationPage() {
                 />
               </div>
               <div>
-                <h1 className='font-bold text-red-600 text-2xl  mb-3'>{user_id}</h1>
+                <h1 className='font-bold text-red-600 text-2xl  mb-3'>{name}</h1>
               </div>
             </div>
           </div>
@@ -103,12 +104,15 @@ function ConversationPage() {
 
             {/* creates a new array with the elements of messages in reverse order.
             Then, the map function is used to iterate over the reversed array and render the messages accordingly */}
-            {messages.slice(0).reverse().map((message) =>
-            (<div key={message.id}>
-              {message.sender_id === current_user.id ? <MyMessage message={message.message_body} /> : <OtherMessage message={message.message_body} />}
-            </div>)
+            {messages.slice(0).reverse().map((message, index) => {
+              // { message.sender_id === user_id ? setName(message.sender_first_name) : "" }
+              //setName((_e) => _e = "message.sender_first_name")
+              //console.log("testtttttt :", message, current_user.id)
+              return (<div key={index}>
+                {message.sender_id === current_user.id ? <MyMessage message={message.message_body} time={message.message_created_on} /> : <OtherMessage message={message.message_body} time={message.message_created_on} />}
+              </div>)
 
-            )}
+            })}
             <div ref={messagesEndRef} /> {/* Use the ref to scroll to the latest message */}
 
           </div>

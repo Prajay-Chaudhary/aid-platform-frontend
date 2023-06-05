@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navbar, Avatar, Dropdown, Button } from "flowbite-react";
 import Logo from '../images/Logo.png'
-import MakeRequest from "./Common/MakeRequest";
+import MakeRequestForm from "./Common/MakeRequestForm";
 import { PlusCircleIcon } from "@heroicons/react/20/solid";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 
@@ -86,7 +86,7 @@ const TopBar = () => {
                   <span>Request</span>
                 </Button>
               </div>
-              {modalOn && < MakeRequest setModalOn={setModalOn} />}
+              {modalOn && < MakeRequestForm setModalOn={setModalOn} />}
             </Navbar.Link>
           </Navbar.Collapse>
         </Navbar>

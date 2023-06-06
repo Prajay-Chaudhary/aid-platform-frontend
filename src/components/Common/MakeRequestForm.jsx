@@ -12,7 +12,7 @@ const MakeRequestForm = ({ setModalOn }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [requestType, setRequestType] = useState("");
-  const [image, setImage] = useState(null); // Store the selected image as a state
+  const [images, setImages] = useState(null); // Store the selected image as a state
 
   const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
@@ -30,7 +30,7 @@ const MakeRequestForm = ({ setModalOn }) => {
     formData.append('request[title]', title);
     formData.append('request[description]', description);
     formData.append('request[request_type]', requestType);
-    formData.append('request[image]', image); // Append the image to the form data
+    formData.append('request[images]', images); // Append the image to the form data
     console.log("form date", formData);
 
     try {
@@ -180,8 +180,8 @@ const MakeRequestForm = ({ setModalOn }) => {
                     helperText="accepeted .jpg, .jpeg, .png only. Must be less than 5mb."
                     id="file"
                     name="image"
-                    multiple={false}
-                    onChange={(e) => setImage(e.target.files[0])}
+                    multiple={true}
+                    onChange={(e) => setImages(e.target.files[0])}
                   />
                 </div>
               </div>

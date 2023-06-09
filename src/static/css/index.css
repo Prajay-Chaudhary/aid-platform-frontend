@@ -20,6 +20,6 @@ ul {
     list-style-type: none;
 }
 
-.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+/* .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
     height: 100vh !important;
-}
+} */

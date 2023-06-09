@@ -53,7 +53,7 @@ const MakeRequestForm = ({ setModalOn }) => {
 
   return (
     <>
-      <div className="bg-zinc-200 opacity-95 fixed inset-0 z-50">
+      <div className="bg-gray-800 bg-opacity-50 fixed inset-0 flex items-center justify-center shadow-lg z-50">
         <div className="flex h-screen w-screen justify-center items-center ">
           <div className="flex-col justify-center bg-white py-10 px-8 rounded-xl shadow-xl">
             <div className='flex float-right pl-0.5'>

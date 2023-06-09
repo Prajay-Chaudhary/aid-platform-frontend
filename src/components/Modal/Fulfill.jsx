@@ -11,7 +11,7 @@ const Fulfill = ({ setAlertOn }) => {
 
   return (
     <>
-      <div className="bg-zinc-200 fixed inset-0 flex items-center justify-center">
+      <div className="bg-gray-900 bg-opacity-50 fixed inset-0 flex items-center justify-center shadow-lg z-50">
         <div className="bg-white rounded-xl shadow-xl w-10/12 sm:w-8/12 md:w-6/12 lg:w-4/12 xl:w-3/12">
           <div className='mt-2'>
             <InformationCircleIcon className="mx-auto mb-4 h-14 w-14 text-red-500 dark:text-red-500" />

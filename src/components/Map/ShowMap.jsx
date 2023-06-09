@@ -122,7 +122,7 @@ const ShowMap = () => {
   return (
     <>
       <div className="relative">
-        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true} ref={mapRef} className="z-0">
+        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true} ref={mapRef} className="z-0 h-screen w-screen">
           <LocateUser />
           <InnerComponent setBoundaries={() => { }} />
           <TileLayer
@@ -160,7 +160,7 @@ const ShowMap = () => {
                     <div>
                       {/*open a new modal to show request detail*/}
                       <Button size="md" gradientMonochrome="teal" onClick={() => handleClicked(request)}>
-                        <span>Show Request</span>
+                        <span>See full details</span>
                         <ArrowRightIcon className="h-6 w-6 text-black mr-1 ml-1" />
                       </Button>
                     </div>

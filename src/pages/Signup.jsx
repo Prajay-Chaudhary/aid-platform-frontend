@@ -145,19 +145,13 @@ const Signup = () => {
               <div className="mb-2 block">
                 <Label
                   htmlFor="file"
-                  value="Upload file"
+                  value="Upload your Id:"
                 />
               </div>
               <FileInput
                 id="file"
                 helperText="Upload your identity *(approved formats: .jpg, .png, .pdf only)"
               />
-            </div>
-            <div className="flex items-center gap-2">
-              <Checkbox id="remember" />
-              <Label htmlFor="remember">
-                Remember me
-              </Label>
             </div>
             <Button type="submit" className='bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 rounded-full'>
               SignIn

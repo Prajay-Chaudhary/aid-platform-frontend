@@ -27,7 +27,7 @@ function Login() {
       // set token to session storage by converting it to a JSON string
       sessionStorage.setItem('token', JSON.stringify(token));
       setUserData(user_token);
-      window.location = '/request'; // Navigate to the request page
+      window.location = '/requests'; // Navigate to the request page
 
     } else {
       console.error('Login failed');

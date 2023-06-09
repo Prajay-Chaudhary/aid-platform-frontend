@@ -58,7 +58,7 @@ function ChatPage() {
       ) : (
         <div>
           <div className='text-center mb-3'>
-            <h1 className='bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text text-2xl mb-3'>
+            <h1 className='bg-gradient-to-r from-red-600 via-yellow-500 to-indigo-400 inline-block text-transparent bg-clip-text text-2xl mb-3'>
               Active Conversations:
             </h1>
           </div>

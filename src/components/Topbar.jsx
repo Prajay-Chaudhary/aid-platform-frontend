@@ -73,8 +73,8 @@ const TopBar = () => {
             <Navbar.Link href="/profile">
               Profile
             </Navbar.Link>
-            <Navbar.Link href="/request">
-              Request
+            <Navbar.Link href="/requests">
+              Requests
             </Navbar.Link>
             <Navbar.Link href="/chat">
               Messages
@@ -83,7 +83,7 @@ const TopBar = () => {
               <div>
                 <Button size="md" gradientMonochrome="teal" onClick={clicked} >
                   <PlusCircleIcon className="h-6 w-6 text-white-500 mr-1" />
-                  <span>Request</span>
+                  <span>Requests</span>
                 </Button>
               </div>
               {modalOn && < MakeRequestForm setModalOn={setModalOn} />}

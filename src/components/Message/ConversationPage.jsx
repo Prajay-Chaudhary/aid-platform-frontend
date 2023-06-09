@@ -117,7 +117,7 @@ function ConversationPage() {
 
           </div>
           <form
-            className="sticky top-[100vh] bg-sky-500 flex py-5 px-6 rounded-lg drop-shadow-lg hover:drop-shadow-2xl"
+            className="sticky top-[100vh] bg-gradient-to-r from-fuchsia-500 to-cyan-500 flex py-5 px-6 rounded-lg drop-shadow-lg hover:drop-shadow-2xl"
             onSubmit={handleFormSubmit}
           >
             <TextInput

@@ -31,7 +31,7 @@ const MakeRequestForm = ({ setModalOn }) => {
     formData.append('request[description]', description);
     formData.append('request[request_type]', requestType);
     formData.append('request[images]', images); // Append the image to the form data
-    console.log("form date", formData);
+    console.log("form data", formData);
 
     try {
       const res = await fetch('http://localhost:3001/requests', {

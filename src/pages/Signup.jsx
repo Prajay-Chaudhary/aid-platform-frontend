@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Label, TextInput, Button, Checkbox, FileInput } from 'flowbite-react'
+import { Label, TextInput, Button, FileInput } from 'flowbite-react'
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
@@ -9,31 +9,27 @@ const Signup = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [error, setError] = useState(false);
+  const [file, setFile] = useState(null); // Store the selected file image as a state
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData(); // Create a new FormData object
+    formData.append('user[username]', username);
+    formData.append('user[email]', email);
+    formData.append('user[password]', password);
+    formData.append('user[first_name]', firstName);
+    formData.append('user[last_name]', lastName);
+    formData.append('user[files]', file); // Append the files to the form data
     setError(false);
     try {
       const res = await fetch('http://localhost:3001/signup', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          user: {
-            username,
-            email,
-            password,
-            first_name: firstName,
-            last_name: lastName
-          }
-        })
+        body: formData // Send the form data instead of JSON
       });
       const json = await res.json();
       console.log(json);
       navigate('/login'); // Navigate to the login page
-      // Redirect to login page or any other page you want
     } catch (err) {
       console.error(err);
       setError(true);
@@ -151,6 +147,9 @@ const Signup = () => {
               <FileInput
                 id="file"
                 helperText="Upload your identity *(approved formats: .jpg, .png, .pdf only)"
+                name="file"
+                multiple={false}
+                onChange={(e) => setFile(e.target.files[0])}
               />
             </div>
             <Button type="submit" className='bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 rounded-full'>
@@ -165,6 +164,7 @@ const Signup = () => {
   )
 }
 export default Signup
+
 
 
 

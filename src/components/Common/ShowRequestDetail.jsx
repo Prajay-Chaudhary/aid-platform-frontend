@@ -65,7 +65,7 @@ const ShowRequestDetail = ({ setModalOn, request }) => {
                   <img className="object-cover w-full" src={request.image} alt="request image" />
                 </div>
                 <div className="md:w-1/2 pr-4">
-                  <p className='text-2xl font-bold'>DETAILS</p>
+                  <p className='text-2xl font-bold'>DESCRIPTIONS</p>
                   <p className="text-gray-600 min-h-40 max-h-96 overflow-y-auto">{request.description}</p>
                 </div>
 
@@ -99,7 +99,7 @@ const ShowRequestDetail = ({ setModalOn, request }) => {
                   <h1 className='text-2xl font-bold'>
                     Address:
                   </h1>
-                  <MapContainer center={[request.latitude, request.longitude]} zoom={13} scrollWheelZoom={false} className='rounded z-0' style={{ width: '100%', height: '400px' }}>
+                  <MapContainer center={[request.latitude, request.longitude]} zoom={13} scrollWheelZoom={false} className='rounded-xl z-0' style={{ width: '100%', height: '400px' }}>
                     <TileLayer
                       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

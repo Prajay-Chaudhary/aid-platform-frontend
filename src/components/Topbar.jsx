@@ -65,7 +65,7 @@ const TopBar = () => {
             </Dropdown>
             <Navbar.Toggle />
           </div>
-          <Navbar.Collapse>
+          <Navbar.Collapse className="menu">
             {!token ?
               <Navbar.Link href="/" active={true}>
                 Home

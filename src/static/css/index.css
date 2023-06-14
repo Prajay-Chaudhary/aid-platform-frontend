@@ -23,3 +23,7 @@ ul {
 /* .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
     height: 100vh !important;
 } */
+/* to make menu items for Topbar component */
+.menu ul {
+    align-items: center;
+}

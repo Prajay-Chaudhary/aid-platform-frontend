@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Label, Textarea, Radio, FileInput, Button, TextInput } from 'flowbite-react';
-import { MapPinIcon } from "@heroicons/react/24/outline";
-import { DocumentTextIcon } from "@heroicons/react/24/outline";
-import { XCircleIcon } from "@heroicons/react/24/outline";
-import { DocumentIcon } from "@heroicons/react/24/outline";
+import { MapPinIcon, DocumentIcon, DocumentTextIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 const MakeRequestForm = ({ setModalOn }) => {

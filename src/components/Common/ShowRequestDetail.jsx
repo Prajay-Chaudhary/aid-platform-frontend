@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Card, Avatar } from 'flowbite-react';
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
-import { ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
+import { AdjustmentsHorizontalIcon, HandRaisedIcon, ClipboardDocumentListIcon, ShareIcon } from "@heroicons/react/24/outline";
 import { useLocation } from 'react-router-dom'; //hook is used to access the location state in the target component.
 import L from 'leaflet';
 
@@ -54,22 +53,24 @@ const ShowRequestDetail = () => {
 
   return (
     <>
-      <div className="p-4">
+      <div className="p-4 m-8">
         <div className='p-3 bg-white-400 rounded-lg shadow-lg mb-4'>
           <h2 className="text-gray-800 font-extrabold text-4xl mb-2">{request.title}</h2>
           <div className='flex'>
-            <div className='mr-2'>
+            <div className='mr-5'>
               <Avatar
                 img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                 alt="image"
                 rounded={true} />
             </div>
-            <div>
-              <p className='text-xl font-zinc-300'> Hosted By:</p>
+            <div className='flex flex-col mb-1'>
+              <div>
+                <p className='text-xl font-normal font-zinc-300'> Hosted By:</p>
+              </div>
+              <div>
+                <p className='text-xl font-bold'>{request.owner_full_name}</p>
+              </div>
             </div>
-          </div>
-          <div className='ml-8 pl-4'>
-            <p>{request.owner_id}</p>
           </div>
         </div>
         <div className="flex">
@@ -123,10 +124,24 @@ const ShowRequestDetail = () => {
               </MapContainer>
             </div>
             <div className="flex justify-end mt-4">
-              <Button className="px-4 py-2 mr-2 text-white bg-blue-500 rounded hover:bg-blue-600" onClick={handleShareClick}>
-                Share
-              </Button>
-              <Button type='submit' colorScheme='teal' onClick={handleClicked} className="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600">Fulfill</Button>
+              <div className='mr-2'>
+                <Button
+                  size="lg"
+                  onClick={handleShareClick}
+                  gradientDuoTone="purpleToPink"
+                  outline>
+                  <span>Share</span>  <span><ShareIcon className="h-6 w-6 text-green-500 ml-2" /></span>
+                </Button>
+              </div>
+              <div>
+                <Button
+                  gradientMonochrome="success"
+                  type='submit'
+                  onClick={handleClicked}
+                  size="lg"
+                ><span>Fulfill</span> <span><HandRaisedIcon className="h-6 w-6 text-red-200 ml-2" /></span>
+                </Button>
+              </div>
             </div>
           </div>
         </div>

@@ -109,7 +109,7 @@ function ConversationPage() {
               //setName((_e) => _e = "message.sender_first_name")
               //console.log("testtttttt :", message, current_user.id)
               return (<div key={index}>
-                {message.sender_id === current_user.id ? <MyMessage message={message.message_body} time={message.message_created_on} /> : <OtherMessage message={message.message_body} time={message.message_created_on} />}
+                {message.sender_id === current_user.id ? <MyMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} /> : <OtherMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} />}
               </div>)
 
             })}

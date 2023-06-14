@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { XCircleIcon } from "@heroicons/react/24/solid";
-import { Button, Card } from 'flowbite-react';
+import { XCircleIcon } from "@heroicons/react/24/outline";
+import { Button, Card, Avatar } from 'flowbite-react';
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import { ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
 import L from 'leaflet';
-import Fulfill from '../Modal/Fulfill';
+import Fulfill from '../Modals/Fulfill';
 
 const ShowRequestDetail = ({ setModalOn, request }) => {
   const [alertOn, setAlertOn] = useState(false);
 
   const handleClicked = () => {
     setAlertOn(true);
+    // will be redirected to the conversation page with the request.owner_id as a route parameter.
+    window.location = `/chat/${request.owner_id}`;
+
   };
 
   const handleCancelClick = () => {
@@ -51,27 +54,43 @@ const ShowRequestDetail = ({ setModalOn, request }) => {
   return (
     <>
       <div className="bg-gray-800 bg-opacity-50 fixed inset-0 flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-xl w-full sm:w-10/12 md:w-9/12 lg:w-10/12">
-          <div className="flex justify-end pr-4 pt-4">
+        <div className="bg-white rounded-xl shadow-xl w-10/12 md:w-9/12 lg:w-8/12 h-3/4 overflow-y-auto">
+          <div className=" absolute top-12 right-18">
             <button onClick={handleCancelClick}>
-              <XCircleIcon className="h-6 w-6 text-red-500" />
+              <XCircleIcon className="h-9 w-9 text-red-600" />
             </button>
           </div>
           <div className="p-4">
-            <h2 className="text-gray-800 font-extrabold text-4xl mb-2">{request.title}</h2>
+            <div className='p-3 bg-white-400 rounded-lg shadow-lg mb-4'>
+              <h2 className="text-gray-800 font-extrabold text-4xl mb-2">{request.title}</h2>
+              <div className='flex'>
+                <div className='mr-2'>
+                  <Avatar
+                    img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    alt="image"
+                    rounded={true} />
+                </div>
+                <div>
+                  <p className='text-xl font-zinc-300'> Hosted By:</p>
+                </div>
+              </div>
+              <div className='ml-8 pl-4'>
+                <p>{request.owner_id}</p>
+              </div>
+            </div>
             <div className="flex">
               <div className="w-2/5 pr-4">
                 <div className="aspect-w-16 aspect-h-9 mb-4">
-                  <img className="object-cover w-full" src={request.image} alt="request image" />
+                  <img className="object-cover w-full rounded-lg" src={request.image} alt="request image" />
                 </div>
-                <div className="md:w-1/2 pr-4">
+                <div className="w-full pr-4">
                   <p className='text-2xl font-bold'>DESCRIPTIONS</p>
                   <p className="text-gray-600 min-h-40 max-h-96 overflow-y-auto">{request.description}</p>
                 </div>
 
               </div>
               <div className="w-3/5">
-                <Card className="mb-2 flex-row">
+                <Card className="mb-2 flex-row w-11/12 md:w-6/12 float-right">
                   <div className='flex mb-1'>
                     <AdjustmentsHorizontalIcon className="h-6 w-6 text-gray-500" />
                     <div className='ml-1'>
@@ -95,10 +114,10 @@ const ShowRequestDetail = ({ setModalOn, request }) => {
                     </div>
                   </div>
                 </Card>
-                <div className="">
-                  <h1 className='text-2xl font-bold'>
+                <div>
+                  <span className='text-2xl font-bold mb-1'>
                     Address:
-                  </h1>
+                  </span> <span>({request.address})</span>
                   <MapContainer center={[request.latitude, request.longitude]} zoom={13} scrollWheelZoom={false} className='rounded-xl z-0' style={{ width: '100%', height: '400px' }}>
                     <TileLayer
                       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -132,3 +151,6 @@ const ShowRequestDetail = ({ setModalOn, request }) => {
 };
 
 export default ShowRequestDetail;
+
+
+

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Label, Textarea, Radio, FileInput, Button, TextInput } from 'flowbite-react';
 import { MapPinIcon } from "@heroicons/react/24/outline";
 import { DocumentTextIcon } from "@heroicons/react/24/outline";
-import { XCircleIcon } from "@heroicons/react/24/solid";
+import { XCircleIcon } from "@heroicons/react/24/outline";
 import { DocumentIcon } from "@heroicons/react/24/outline";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
@@ -58,7 +58,7 @@ const MakeRequestForm = ({ setModalOn }) => {
           <div className="flex-col justify-center bg-white py-10 px-8 rounded-xl shadow-xl">
             <div className='flex float-right pl-0.5'>
               <button onClick={handleCancelClick} className='absolute  right-30 top-10'>
-                <XCircleIcon className="h-9 w-20 text-red-500" />
+                <XCircleIcon className="h-9 w-20 text-red-600" />
               </button>
             </div>
             <div>

@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Request from './pages/Request';
 import Chat from './pages/Chat';
+import RequestDetail from './pages/RequestDetail';
 import UserContext from './context/UserContext';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/requests" element={token ? <Request /> : <Login />} />
             <Route path="/chat" element={token ? <Chat /> : <Login />} />
             <Route path="/chat/:user_id" element={token ? <Chat /> : <Login />} />
+            <Route path="/request-details" element={token ? <RequestDetail /> : <Login />} />
           </Routes>
         </>
       </Router>

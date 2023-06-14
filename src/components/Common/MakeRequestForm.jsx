@@ -180,7 +180,7 @@ const MakeRequestForm = ({ setModalOn }) => {
                     helperText="accepeted .jpg, .jpeg, .png only. Must be less than 5mb."
                     id="file"
                     name="image"
-                    multiple={true}
+                    multiple={false}
                     onChange={(e) => setImages(e.target.files[0])}
                   />
                 </div>

@@ -3,6 +3,7 @@ import LocateUser from "./LocateUser";
 import { Card, Button } from 'flowbite-react';
 import ShowRequestDetail from "../Common/ShowRequestDetail";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import {
   MapContainer,
@@ -19,18 +20,20 @@ const ShowMap = () => {
   const [request, setRequest] = useState([]);
   const token = JSON.parse(sessionStorage.getItem('token'));
   const [loading, setLoading] = useState(true)
-  const [modalOn, setModalOn] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const navigate = useNavigate();
 
   //loading time
   useEffect(() => {
     setTimeout(() => setLoading(false), 5000)
   }, [])
 
-  //to show the selected request after opening the modal
+  //to show the selected request after clicking show details button
   const handleClicked = (request) => {
     setSelectedRequest(request);
-    setModalOn(true);
+    navigate('/request-details', { state: { request } }); //navigate to the "/request-details" route and pass the request object as state.
+
+
   };
 
   const markerIcon = new L.Icon({
@@ -158,7 +161,6 @@ const ShowMap = () => {
                       <p className="font-normal text-gray-700 dark:text-gray-400">{description}</p>
                     </div>
                     <div>
-                      {/*open a new modal to show request detail*/}
                       <Button size="md" gradientMonochrome="teal" onClick={() => handleClicked(request)}>
                         <span>See full details</span>
                         <ArrowRightIcon className="h-6 w-6 text-black mr-1 ml-1" />
@@ -170,13 +172,7 @@ const ShowMap = () => {
             );
           })}
         </MapContainer>
-        {modalOn && (
-          <div className="z-50 absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
-            <div className="bg-white p-4">
-              <ShowRequestDetail setModalOn={setModalOn} request={selectedRequest} />
-            </div>
-          </div>
-        )}
+        <ShowRequestDetail request={selectedRequest} />
         <div className="absolute top-0 right-0 p-2 bg-gray-900 text-white">{counter}</div>
       </div>
     </>

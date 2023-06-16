@@ -26,7 +26,7 @@ const TopBar = () => {
   return (
     token && (
       <>
-        <Navbar fluid={true} rounded={true}>
+        <Navbar fluid={true} rounded={true} className="shadow-lg">
           <Navbar.Brand href="">
             <img
               src={Logo}

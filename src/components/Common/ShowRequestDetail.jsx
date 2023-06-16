@@ -53,10 +53,12 @@ const ShowRequestDetail = () => {
 
   return (
     <>
-      <div className="p-4 m-8">
-        <div className='p-3 bg-white-400 rounded-lg shadow-lg mb-4'>
-          <h2 className="text-gray-800 font-extrabold text-4xl mb-2">{request.title}</h2>
-          <div className='flex'>
+      <div className='bg-zinc-100'>
+        <div className='p-3 bg-white shadow-lg p-1 lg:pl-6'>
+          <div>
+            <h2 className="text-gray-800 font-extrabold text-4xl mb-2">{request.title}</h2>
+          </div>
+          <div className='flex flex-row'>
             <div className='mr-5'>
               <Avatar
                 img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
@@ -65,7 +67,7 @@ const ShowRequestDetail = () => {
             </div>
             <div className='flex flex-col mb-1'>
               <div>
-                <p className='text-xl font-normal font-zinc-300'> Hosted By:</p>
+                <p className='text-l font-normal font-zinc-300'> Hosted By:</p>
               </div>
               <div>
                 <p className='text-xl font-bold'>{request.owner_full_name}</p>
@@ -73,77 +75,82 @@ const ShowRequestDetail = () => {
             </div>
           </div>
         </div>
-        <div className="flex">
-          <div className="w-2/5 pr-4">
-            <div className="aspect-w-16 aspect-h-9 mb-4">
-              <img className="object-cover w-full rounded-lg" src={request.image} alt="request image" />
-            </div>
-            <div className="w-full pr-4">
-              <p className='text-2xl font-bold'>DESCRIPTIONS</p>
-              <p className="text-gray-600 min-h-40 max-h-96 overflow-y-auto">{request.description}</p>
-            </div>
-
-          </div>
-          <div className="w-3/5">
-            <Card className="mb-2 flex-row w-11/12 md:w-6/12 float-right">
-              <div className='flex mb-1'>
-                <AdjustmentsHorizontalIcon className="h-6 w-6 text-gray-500" />
-                <div className='ml-1'>
-                  <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Type of request:
-                  </h5>
-                  <p className='ml-1 text-red-800'>
-                    {request.request_type}
-                  </p>
-                </div>
+        <div className="lg:p-4 p-1 mx-2 mt-2 lg:mt-4">
+          <div className="lg:flex flex-row">
+            <div className="lg:w-6/12 flex flex-col lg:mr-8">
+              <div className="mb-4">
+                <img className="h-full w-full lg:h-96 lg:w-{150} rounded-lg" src={request.image} alt="request image" />
               </div>
-              <div className='flex mb-1'>
-                <ClipboardDocumentListIcon className="h-6 w-6 text-gray-500" />
-                <div className='ml-1'>
-                  <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Status:
-                  </h5>
-                  <p className='ml-1 text-red-800'>
-                    {request.request_status}
-                  </p>
-                </div>
+              <div className="pr-4 mb-8">
+                <p className='text-2xl font-bold'>DESCRIPTIONS</p>
+                <p className="text-black-600 min-h-40 max-h-96 overflow-y-auto">{request.description}</p>
               </div>
-            </Card>
-            <div>
-              <span className='text-2xl font-bold mb-1'>
-                Address:
-              </span> <span>({request.address})</span>
-              <MapContainer center={[request.latitude, request.longitude]} zoom={13} scrollWheelZoom={false} className='rounded-xl z-0' style={{ width: '100%', height: '400px' }}>
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={[request.latitude, request.longitude]} icon={markerIcon}>
-                  <Popup>{request.address}</Popup>
-                </Marker>
-              </MapContainer>
             </div>
-            <div className="flex justify-end mt-4">
-              <div className='mr-2'>
-                <Button
-                  size="lg"
-                  onClick={handleShareClick}
-                  gradientDuoTone="purpleToPink"
-                  outline>
-                  <span>Share</span>  <span><ShareIcon className="h-6 w-6 text-green-500 ml-2" /></span>
-                </Button>
+            <div className="lg:w-6/12 flex flex-col">
+              <div className='mb-4'>
+                <Card className="mb-2 flex flex-row w-11/12 lg:w-6/12 float-center">
+                  <div className='flex flex-row mb-1'>
+                    <AdjustmentsHorizontalIcon className="h-6 w-6 text-gray-500" />
+                    <div className='ml-1'>
+                      <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Type of request:
+                      </h5>
+                      <p className='ml-1 text-red-800'>
+                        {request.request_type}
+                      </p>
+                    </div>
+                  </div>
+                  <div className='flex flex-row mb-1'>
+                    <ClipboardDocumentListIcon className="h-6 w-6 text-gray-500" />
+                    <div className='ml-1'>
+                      <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Status:
+                      </h5>
+                      <p className='ml-1 text-red-800'>
+                        {request.request_status}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
               </div>
               <div>
-                <Button
-                  gradientMonochrome="success"
-                  type='submit'
-                  onClick={handleClicked}
-                  size="lg"
-                ><span>Fulfill</span> <span><HandRaisedIcon className="h-6 w-6 text-red-200 ml-2" /></span>
-                </Button>
+                <div className='mb-4'>
+                  <span className='text-2xl font-bold mb-1'>
+                    Address:
+                  </span> <span>({request.address})</span>
+                </div>
+                <MapContainer center={[request.latitude, request.longitude]} zoom={13} scrollWheelZoom={false} className='rounded-xl z-0' style={{ width: '100%', height: '400px' }}>
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker position={[request.latitude, request.longitude]} icon={markerIcon}>
+                    <Popup>{request.address}</Popup>
+                  </Marker>
+                </MapContainer>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="flex flex-row justify-end mr-6 py-4 items-center">
+        <div className='mr-2'>
+          <Button
+            size="lg"
+            onClick={handleShareClick}
+            gradientDuoTone="purpleToPink"
+            outline>
+            <span>Share</span>  <span><ShareIcon className="h-6 w-6 text-green-500 ml-2" /></span>
+          </Button>
+        </div>
+        <div>
+          <Button
+            gradientMonochrome="success"
+            type='submit'
+            onClick={handleClicked}
+            size="lg"
+          ><span>Fulfill</span> <span><HandRaisedIcon className="h-6 w-6 text-red-200 ml-2" /></span>
+          </Button>
         </div>
       </div>
     </>

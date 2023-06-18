@@ -27,3 +27,11 @@ ul {
 .menu ul {
     align-items: center;
 }
+
+.background-color {
+    background-color: #564D00;
+}
+
+.txt-color {
+    color: #564D00 !important;
+}

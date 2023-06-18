@@ -9,7 +9,7 @@ const OtherMessage = ({ message, messadeDate, messageTime }) => {
       </div>
       <div className='flex flex-col'>
 
-        <div className="bg-white my-2 rounded-full text-black py-3 px-4 w-fit">
+        <div className="background-color my-2 rounded-full text-white py-3 px-4 w-fit">
           {message}
         </div>
         <span className='text-zinc-600 text-xs w-fit self-start'>

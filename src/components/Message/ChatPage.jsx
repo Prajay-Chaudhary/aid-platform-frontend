@@ -69,9 +69,9 @@ function ChatPage() {
                   to={`/chat/${interacted_user_id}`}
                   key={index}
                   className={`group block max-w-xs mx-0 md:mx-auto rounded-lg py-2 md:p-6 ${interacted_user_id === selectedUserId
-                    ? 'ring-sky-900 bg-blue-300 border-solid border-2 border-sky-500'
+                    ? 'text-white background-color border-solid border-2 border-yellow-500'
                     : 'ring-slate-900/5 bg-white'
-                    } shadow-lg space-y-1 hover:bg-sky-500 hover:ring-sky-500`}
+                    } shadow-lg space-y-1 hover:bg-yellow-600 hover:ring-sky-500`}
                   onClick={() => handleConversationClick(interacted_user_id)}
                 >
                   <div className='flex space-x-4'>
@@ -88,7 +88,7 @@ function ChatPage() {
                       <span className='text-md group-hover:text-white'>{message_body} </span>
                     </div>
                     <div className='ml-1 md:ml-4'>
-                      <span className='text-slate-600 text-xs'>{time_ago} ago</span>
+                      <span className='text-slate-400 text-xs'>{time_ago} ago</span>
                     </div>
                   </div>
                 </Link>

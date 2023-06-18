@@ -56,7 +56,7 @@ const ShowRequestDetail = () => {
       <div className='bg-zinc-100'>
         <div className='p-3 bg-white shadow-lg p-1 lg:pl-6'>
           <div>
-            <h2 className="text-gray-800 font-extrabold text-4xl mb-2">{request.title}</h2>
+            <h2 className="txt-color font-extrabold text-4xl mb-2">{request.title}</h2>
           </div>
           <div className='flex flex-row'>
             <div className='mr-5'>
@@ -82,7 +82,7 @@ const ShowRequestDetail = () => {
                 <img className="h-full w-full lg:h-96 lg:w-{150} rounded-lg" src={request.image} alt="request image" />
               </div>
               <div className="pr-4 mb-8">
-                <p className='text-2xl font-bold'>DESCRIPTIONS</p>
+                <p className='text-2xl font-bold txt-color'>DESCRIPTIONS</p>
                 <p className="text-black-600 min-h-40 max-h-96 overflow-y-auto">{request.description}</p>
               </div>
             </div>
@@ -115,7 +115,7 @@ const ShowRequestDetail = () => {
               </div>
               <div>
                 <div className='mb-4'>
-                  <span className='text-2xl font-bold mb-1'>
+                  <span className='text-xl font-bold mb-1 txt-color'>
                     Address:
                   </span> <span>({request.address})</span>
                 </div>
@@ -140,16 +140,16 @@ const ShowRequestDetail = () => {
             onClick={handleShareClick}
             gradientDuoTone="purpleToPink"
             outline>
-            <span>Share</span>  <span><ShareIcon className="h-6 w-6 text-green-500 ml-2" /></span>
+            <span>Share</span>  <span><ShareIcon className="h-6 w-6 txt-color ml-2" /></span>
           </Button>
         </div>
         <div>
           <Button
-            gradientMonochrome="success"
+            gradientMonochrome="teal"
             type='submit'
             onClick={handleClicked}
             size="lg"
-          ><span>Fulfill</span> <span><HandRaisedIcon className="h-6 w-6 text-red-200 ml-2" /></span>
+          ><span>Fulfill</span> <span><HandRaisedIcon className="h-6 w-6 txt-color ml-2" /></span>
           </Button>
         </div>
       </div>

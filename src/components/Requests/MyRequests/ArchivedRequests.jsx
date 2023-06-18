@@ -58,7 +58,7 @@ const ArchivedRequests = () => {
                       gradientDuoTone="purpleToPink"
                       outline
                     >
-                      Update
+                      republish
                     </Button>
                   </div>
                 </div>

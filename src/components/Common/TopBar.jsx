@@ -56,18 +56,18 @@ const TopBar = () => {
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>
-                <p className="text-yellow-600">My Profile</p>
+                <p className="txt-color">My Profile</p>
               </Dropdown.Item>
               <Dropdown.Item>
-                <p className="text-yellow-600">Change Password</p>
+                <p className="txt-color">Change Password</p>
               </Dropdown.Item>
               <Dropdown.Item onClick={redirectToAllMyRequest}>
-                <p className="text-yellow-600">My Requests</p>
+                <p className="txt-color">My Requests</p>
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={handleLogout}>
                 <span className='text-red-500 mr-1 font-bold'>Sign out</span>
-                <ArrowRightCircleIcon className="h-6 w-6 text-black-500" />
+                <ArrowRightCircleIcon className="h-6 w-6 txt-color" />
               </Dropdown.Item>
             </Dropdown>
             <Navbar.Toggle />
@@ -75,22 +75,22 @@ const TopBar = () => {
           <Navbar.Collapse className="menu">
             {!token ?
               <Navbar.Link href="/" active={true}>
-                <p className="text-yellow-600">Home</p>
+                <p className="txt-color">Home</p>
               </Navbar.Link> : ""}
             <Navbar.Link href="/profile">
-              <p className="text-yellow-600">Profile</p>
+              <p className="txt-color">Profile</p>
             </Navbar.Link>
             <Navbar.Link href="/requests">
-              <p className="text-yellow-600">Requests</p>
+              <p className="txt-color">Requests</p>
             </Navbar.Link>
             <Navbar.Link href="/chat">
-              <p className="text-yellow-600">Messages</p>
+              <p className="txt-color">Messages</p>
             </Navbar.Link>
             <Navbar.Link>
               <div>
                 <Button size="md" gradientMonochrome="teal" onClick={clicked} >
                   <PlusCircleIcon className="h-6 w-6 text-white-500 mr-1" />
-                  <span>Requests</span>
+                  <span className="txt-color">Requests</span>
                 </Button>
               </div>
               {modalOn && < MakeRequestForm setModalOn={setModalOn} />}

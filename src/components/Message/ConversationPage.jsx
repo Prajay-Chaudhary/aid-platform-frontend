@@ -117,7 +117,7 @@ function ConversationPage() {
 
           </div>
           <form
-            className="sticky top-[100vh] bg-gradient-to-r from-fuchsia-500 to-cyan-500 flex py-5 px-6 rounded-lg drop-shadow-lg hover:drop-shadow-2xl"
+            className="sticky top-[100vh] background-color flex py-5 px-6 rounded-lg drop-shadow-lg hover:drop-shadow-2xl"
             onSubmit={handleFormSubmit}
           >
             <TextInput
@@ -131,8 +131,7 @@ function ConversationPage() {
             <Button
               type="submit"
               size="lg"
-              gradientDuoTone="purpleToPink"
-              className='mt-1'
+              className='bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mt-1'
             >
               Send
             </Button>

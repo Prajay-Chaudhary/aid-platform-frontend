@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Tabs, Button } from 'flowbite-react';
-import UnFulfilledRequests from './MyRequests/UnFulfilledRequests';
-import FulfilledRequests from './MyRequests/FulfilledRequests';
-import ArchivedRequests from './MyRequests/ArchivedRequests';
+import UnFulfilledRequests from '../Requests/MyRequests/UnFulfilledRequests';
+import FulfilledRequests from '../Requests/MyRequests/FulfilledRequests';
+import ArchivedRequests from '../Requests/MyRequests/ArchivedRequests';
 
 const AllMyRequest = () => {
 

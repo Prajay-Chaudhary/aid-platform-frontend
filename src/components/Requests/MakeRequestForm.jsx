@@ -59,7 +59,7 @@ const MakeRequestForm = ({ setModalOn }) => {
               </button>
             </div>
             <div>
-              <h1 className='text-red-800 font-bolder text-4xl'>Create a new request</h1>
+              <h1 className='txt-color font-bolder text-4xl'>Create a new request</h1>
             </div>
             <form className="flex flex-col gap-4 mt-2" onSubmit={handleSubmit}>
               <div>
@@ -71,7 +71,7 @@ const MakeRequestForm = ({ setModalOn }) => {
                       className=' font-extrabold'
                     />
                     <div>
-                      <MapPinIcon className="h-6 w-6 text-yellow-700" />
+                      <MapPinIcon className="h-6 w-6 txt-color" />
                     </div>
                   </div>
                   <div className='mb-3'>
@@ -91,7 +91,7 @@ const MakeRequestForm = ({ setModalOn }) => {
                         className='font-extrabold'
                       />
                       <div>
-                        <DocumentIcon className="h-6 w-6 text-yellow-700" />
+                        <DocumentIcon className="h-6 w-6 txt-color" />
                       </div>
                     </div>
                   </div>
@@ -114,7 +114,7 @@ const MakeRequestForm = ({ setModalOn }) => {
                         className=' font-extrabold'
                       />
                       <div>
-                        <DocumentTextIcon className="h-6 w-6 text-yellow-700" />
+                        <DocumentTextIcon className="h-6 w-6 txt-color" />
                       </div>
                     </div>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import ShowRequestDetail from '../components/Common/ShowRequestDetail'
+import ShowRequestDetail from '../components/Requests/ShowRequestDetail'
 
 const RequestDetail = () => {
   return (

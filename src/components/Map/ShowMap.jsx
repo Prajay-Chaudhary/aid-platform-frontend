@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import LocateUser from "./LocateUser";
 import { Card, Button } from 'flowbite-react';
-import ShowRequestDetail from "../Common/ShowRequestDetail";
+import ShowRequestDetail from "../Requests/ShowRequestDetail"
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from 'react-router-dom';
 import L from 'leaflet';

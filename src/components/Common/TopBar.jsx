@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import { Navbar, Avatar, Dropdown, Button } from "flowbite-react";
-import Logo from '../images/Logo.png'
-import MakeRequestForm from "./Common/MakeRequestForm";
+import Logo from '../../images/Logo.png'
+import MakeRequestForm from "../Requests/MakeRequestForm";
 import { PlusCircleIcon } from "@heroicons/react/20/solid";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from 'react-router-dom';
+
 
 
 const TopBar = () => {
   const token = JSON.parse(sessionStorage.getItem('token'));
   const user = JSON.parse(sessionStorage.getItem('user'));
   const [modalOn, setModalOn] = useState(false);
+  const navigate = useNavigate();
 
   const clicked = () => {
     setModalOn(true)
+  }
+
+  const redirectToAllMyRequest = () => {
+    navigate('/my-requests') // redirect to my AllMyRequest page
   }
 
   const handleLogout = () => {
@@ -49,13 +56,13 @@ const TopBar = () => {
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>
-                My Profile
+                <p className="text-yellow-600">My Profile</p>
               </Dropdown.Item>
               <Dropdown.Item>
-                My Fulfillments
+                <p className="text-yellow-600">Change Password</p>
               </Dropdown.Item>
-              <Dropdown.Item>
-                My Requests
+              <Dropdown.Item onClick={redirectToAllMyRequest}>
+                <p className="text-yellow-600">My Requests</p>
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={handleLogout}>
@@ -68,16 +75,16 @@ const TopBar = () => {
           <Navbar.Collapse className="menu">
             {!token ?
               <Navbar.Link href="/" active={true}>
-                Home
+                <p className="text-yellow-600">Home</p>
               </Navbar.Link> : ""}
             <Navbar.Link href="/profile">
-              Profile
+              <p className="text-yellow-600">Profile</p>
             </Navbar.Link>
             <Navbar.Link href="/requests">
-              Requests
+              <p className="text-yellow-600">Requests</p>
             </Navbar.Link>
             <Navbar.Link href="/chat">
-              Messages
+              <p className="text-yellow-600">Messages</p>
             </Navbar.Link>
             <Navbar.Link>
               <div>

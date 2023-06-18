@@ -41,7 +41,7 @@ const MakeRequestForm = ({ setModalOn }) => {
       const json = await res.json();
       setRequestData(json);
       console.log("request data:", json);
-      window.location = '/request'; // Navigate to the request page
+      window.location = '/requests'; // Navigate to the request page
     } catch (err) {
       console.error(err);
     }

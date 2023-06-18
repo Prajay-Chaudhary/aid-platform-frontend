@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { checkingToken } from './components/Authentication/checking'
-import TopBar from './components/Topbar';
+import TopBar from "./components/Common/TopBar"
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -10,6 +10,7 @@ import Request from './pages/Request';
 import Chat from './pages/Chat';
 import RequestDetail from './pages/RequestDetail';
 import UserContext from './context/UserContext';
+import MyRequest from './pages/MyRequest';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/chat" element={token ? <Chat /> : <Login />} />
             <Route path="/chat/:user_id" element={token ? <Chat /> : <Login />} />
             <Route path="/request-details" element={token ? <RequestDetail /> : <Login />} />
+            <Route path="/my-requests" element={token ? <MyRequest /> : <Login />} />
           </Routes>
         </>
       </Router>

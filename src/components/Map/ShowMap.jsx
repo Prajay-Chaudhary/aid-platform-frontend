@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import LocateUser from "./LocateUser";
-import { Card, Button } from 'flowbite-react';
+import { Card, Button, Tooltip } from 'flowbite-react';
 import ShowRequestDetail from "../Requests/ShowRequestDetail"
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { FaLocationArrow } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import {
@@ -27,6 +28,12 @@ const ShowMap = () => {
   useEffect(() => {
     setTimeout(() => setLoading(false), 5000)
   }, [])
+
+
+
+  const locataeMe = () => {
+    window.location = "/requests"
+  };
 
   //to show the selected request after clicking show details button
   const handleClicked = (request) => {
@@ -173,6 +180,18 @@ const ShowMap = () => {
           })}
         </MapContainer>
         <ShowRequestDetail request={selectedRequest} />
+        <div className="absolute top-20 z-10">
+          <Tooltip
+            content="Locate me"
+            placement="right"
+            style="light"
+          >
+            <button className="font-bold py-2 px-4 rounded text-blue-600 text-2xl" onClick={locataeMe}>
+              <FaLocationArrow />
+            </button>
+          </Tooltip>
+
+        </div>
         <div className="absolute top-0 right-0 p-2 bg-gray-900 text-white">{counter}</div>
       </div>
     </>

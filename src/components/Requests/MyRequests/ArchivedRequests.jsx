@@ -3,6 +3,7 @@ import { Button } from 'flowbite-react';
 
 const ArchivedRequests = () => {
   const [requests, setRequests] = useState([]);
+  const [requestStatus, setRequestStatus] = useState('unfulfilled');
   const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
 
@@ -25,15 +26,37 @@ const ArchivedRequests = () => {
     }
   }
 
+  // update request sitation to unfulfilled
+
+  const handleSubmit = async (id) => {
+
+    try {
+      const response = await fetch(`http://localhost:3001/requests/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ request_status: 'unfulfilled' }),
+        headers: {
+          'content-type': 'application/json',
+          'accept': 'application/json',
+          'Authorization': `Bearer ${token}` // send authorized token to the server
+        }
+      });
+      const data = await response.json()
+      setRequests(data)
+      console.log("data passed for unfulfilled:", data)
+    } catch (error) {
+      alert(" Please Try later ")
+    }
+  }
+
   useEffect(() => {
     getRequests()
-  }, []);
+  }, [requestStatus]);
 
   return (
     <>
       {/* for archived */}
       <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-5'>
-        {requests?.map((request, index) => {
+        {requests && requests.map((request, index) => {
           return (
             <div key={request.id} className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-slate-100 hover:shadow-lg">
               <a href="#">
@@ -56,6 +79,7 @@ const ArchivedRequests = () => {
                     <Button
                       type="submit"
                       gradientDuoTone="purpleToPink"
+                      onClick={() => handleSubmit(request.id)}
                       outline
                     >
                       republish

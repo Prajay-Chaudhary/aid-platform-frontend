@@ -7,7 +7,6 @@ import ArchivedRequests from '../Requests/MyRequests/ArchivedRequests';
 const AllMyRequest = () => {
 
   const [requests, setRequests] = useState([])
-  const [requestStatus, setRequestStatus] = useState('pending')
   const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
 
@@ -35,25 +34,17 @@ const AllMyRequest = () => {
 
   useEffect(() => {
     getRequests()
-  }, [requestStatus]);
+  }, []);
 
 
-  let counter = 0;
-
-  for (let i = 0; i < requests.length; i++) {
-    if ((requests[i].requestStatus === "unfulfilled" && current_user.username === requests[i].current_user?.username) || requests[i].requestStatus === "Fulfilled") counter++;
-  }
 
   return (
     <>
       <div className='flex flex-col items-center'>
         <div className='m-8 p-8'>
-          <p className='text-6xl font-bold'>
+          <p className='text-6xl font-bold txt-color'>
             My Requests
           </p>
-          <div className='text-center mt-6'>
-            <p>You have <span className='text-red-600 text-lg'>{counter}</span> pending request to be fulfilled.</p>
-          </div>
         </div>
 
         <div>

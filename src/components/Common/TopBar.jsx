@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Avatar, Dropdown, Button } from "flowbite-react";
+import { Navbar, Avatar, Dropdown, Button, Tooltip } from "flowbite-react";
 import Logo from '../../images/Logo.png'
 import MakeRequestForm from "../Requests/MakeRequestForm";
 import { PlusCircleIcon } from "@heroicons/react/20/solid";
@@ -88,10 +88,16 @@ const TopBar = () => {
             </Navbar.Link>
             <Navbar.Link>
               <div>
-                <Button size="md" gradientMonochrome="teal" onClick={clicked} >
-                  <PlusCircleIcon className="h-6 w-6 text-white-500 mr-1" />
-                  <span className="txt-color">Requests</span>
-                </Button>
+                <Tooltip
+                  content="Click to add a request"
+                  placement="right"
+                  style="dark"
+                >
+                  <Button size="md" gradientMonochrome="teal" onClick={clicked} >
+                    <PlusCircleIcon className="h-6 w-6 text-white-500 mr-1" />
+                    <span className="txt-color">Request</span>
+                  </Button>
+                </Tooltip>
               </div>
               {modalOn && < MakeRequestForm setModalOn={setModalOn} />}
             </Navbar.Link>

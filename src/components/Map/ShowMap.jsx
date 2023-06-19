@@ -186,13 +186,12 @@ const ShowMap = () => {
             placement="right"
             style="light"
           >
-            <button className="font-bold py-2 px-4 rounded text-blue-600 text-2xl" onClick={locataeMe}>
+            <button className="font-bold py-2 px-4 rounded txt-color text-2xl" onClick={locataeMe}>
               <FaLocationArrow />
             </button>
           </Tooltip>
 
         </div>
-        <div className="absolute top-0 right-0 p-2 bg-gray-900 text-white">{counter}</div>
       </div>
     </>
   );

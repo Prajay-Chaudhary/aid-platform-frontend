@@ -6,7 +6,7 @@ const FulfilledRequests = () => {
   const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
 
-  // get all my unfulfilled requests that the current user have.
+  // get all my fulfilled requests that the current user have.
   const getRequests = async (e) => {
     try {
       const response = await fetch('http://localhost:3001/requests/fulfilled_requests', {
@@ -33,7 +33,7 @@ const FulfilledRequests = () => {
     <>
       {/* for fulfilled */}
       <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-5'>
-        {requests?.map((request, index) => {
+        {requests && requests?.map((request, index) => {
           return (
             <div key={request.id} className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-slate-100 hover:shadow-lg">
               <a href="#">
@@ -46,7 +46,7 @@ const FulfilledRequests = () => {
                 <div className='flex justify-center'>
                   <Button
                     type="submit"
-                    className=" background-color "
+                    className=" background-color hover:bg-yellow-900 "
                   >
                     See Details
                   </Button>

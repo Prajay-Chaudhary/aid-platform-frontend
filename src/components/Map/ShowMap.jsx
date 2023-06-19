@@ -157,21 +157,28 @@ const ShowMap = () => {
 
             return (
               <Marker key={id} position={{ lat: latitude, lng: longitude }} icon={markerIconToUse}>
-                <Popup>
-                  <Card imgAlt="request image" imgSrc={image}>
-                    <div>
-                      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        {request_type}
-                      </h5>
-                    </div>
-                    <div>
-                      <p className="font-normal text-gray-700 dark:text-gray-400">{description}</p>
-                    </div>
-                    <div>
-                      <Button size="md" className="background-color hover:bg-yellow-900" onClick={() => handleClicked(request)}>
-                        <span>See full details</span>
-                        <ArrowRightIcon className="h-6 w-6 text-black mr-1 ml-1" />
-                      </Button>
+                <Popup className="max-h-[250px] min-w-[390px]">
+                  <Card className="min-w-[350px] max-h-[225px]">
+                    <div className="flex flex-row gap-4">
+                      <div className="max-h-[250px] min-h-[200px] max-w-[150px]">
+                        <img src={image} alt="request image" className="min-h-[175px] rounded " />
+                      </div>
+                      <div className="text-center">
+                        <div>
+                          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            {request_type}
+                          </h5>
+                        </div>
+                        <div>
+                          <p className="font-normal text-gray-700 dark:text-gray-400">{description}</p>
+                        </div>
+                        <div>
+                          <Button size="sm" className="background-color hover:bg-yellow-900" onClick={() => handleClicked(request)}>
+                            <span>See details</span>
+                            <ArrowRightIcon className="h-6 w-6 text-black mr-1 ml-1" />
+                          </Button>
+                        </div>
+                      </div>
                     </div>
                   </Card>
                 </Popup>

@@ -66,7 +66,7 @@ const TopBar = () => {
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={handleLogout}>
-                <span className='text-red-500 mr-1 font-bold'>Sign out</span>
+                <span className='txt-color mr-1 font-bold'>Logout</span>
                 <ArrowRightCircleIcon className="h-6 w-6 txt-color" />
               </Dropdown.Item>
             </Dropdown>

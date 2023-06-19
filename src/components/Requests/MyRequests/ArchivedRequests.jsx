@@ -41,7 +41,8 @@ const ArchivedRequests = () => {
         }
       });
       const data = await response.json()
-      setRequests(data)
+      const newData = requests.filter(req => req.id != id) // this function allow to filter request array and return the array of request without include current request that we just passed for unfulfilled.
+      setRequests(newData)
       console.log("data passed for unfulfilled:", data)
     } catch (error) {
       alert(" Please Try later ")

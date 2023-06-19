@@ -5,7 +5,6 @@ const UnFulfilledRequests = () => {
 
   const [requests, setRequests] = useState([]);
   const token = JSON.parse(sessionStorage.getItem('token'));
-  const current_user = JSON.parse(sessionStorage.getItem('user'));
 
   // get all my unfulfilled requests that the current user have.
   const getRequests = async (e) => {
@@ -26,15 +25,41 @@ const UnFulfilledRequests = () => {
     }
   }
 
+
+
+  const handleSubmit = async (id) => {
+
+    try {
+      const response = await fetch(`http://localhost:3001/requests/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ request_status: 'fulfilled' }),
+        headers: {
+          'content-type': 'application/json',
+          'accept': 'application/json',
+          'Authorization': `Bearer ${token}` // send authorized token to the server
+        }
+      });
+      const data = await response.json()
+      const newData = requests.filter(req => req.id != id) // this function allow to filter request array and return the array of request without include current request that we just passed for fulfilled.
+      setRequests(newData)
+
+      console.log("data passed for unfulfilled:", data)
+    } catch (error) {
+      alert(" Please Try later ")
+    }
+  }
+
   useEffect(() => {
     getRequests()
   }, []);
+
+
 
   return (
     <>
       {/* for unfulfilled */}
       <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-5'>
-        {requests?.map((request, index) => {
+        {requests && requests?.map((request, index) => {
           return (
             <div key={request.id} className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-slate-100 hover:shadow-lg">
               <a href="#">
@@ -59,6 +84,7 @@ const UnFulfilledRequests = () => {
                       color="gray"
                       className='hover:text-yellow-900 focus:outline-none focus:ring-4 focus:text-yellow-900 focus:ring-yellow-900 dark:focus:ring-yellow-900'
                       outline
+                      onClick={() => handleSubmit(request.id)}
                     >
                       Mark as Fulfilled
                     </Button>

@@ -40,14 +40,14 @@ const AllMyRequest = () => {
 
   return (
     <>
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-center mx-4 lg:mx-6'>
         <div className='m-8 p-8'>
           <p className='text-6xl font-bold txt-color'>
             My Requests
           </p>
         </div>
 
-        <div>
+        <div className='w-full mx-6'>
           <Tabs.Group
             aria-label="Tabs with underline"
             style="underline"

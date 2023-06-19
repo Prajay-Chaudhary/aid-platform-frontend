@@ -93,9 +93,9 @@ const TopBar = () => {
                   placement="right"
                   style="dark"
                 >
-                  <Button size="md" gradientMonochrome="teal" onClick={clicked} >
+                  <Button size="md" className="background-color hover:bg-yellow-900 focus:outline-none focus:ring-4 focus:ring-yellow-900 dark:focus:ring-yellow-900" onClick={clicked} >
                     <PlusCircleIcon className="h-6 w-6 text-white-500 mr-1" />
-                    <span className="txt-color">Request</span>
+                    <span className="text-white">Request</span>
                   </Button>
                 </Tooltip>
               </div>

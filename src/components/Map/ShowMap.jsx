@@ -168,7 +168,7 @@ const ShowMap = () => {
                       <p className="font-normal text-gray-700 dark:text-gray-400">{description}</p>
                     </div>
                     <div>
-                      <Button size="md" gradientMonochrome="teal" onClick={() => handleClicked(request)}>
+                      <Button size="md" className="background-color hover:bg-yellow-900" onClick={() => handleClicked(request)}>
                         <span>See full details</span>
                         <ArrowRightIcon className="h-6 w-6 text-black mr-1 ml-1" />
                       </Button>

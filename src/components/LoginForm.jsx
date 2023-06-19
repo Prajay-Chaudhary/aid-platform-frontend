@@ -77,7 +77,7 @@ function LoginForm({ handleLogin }) {
               </Label>
             </div>
             <Button type="submit"
-              className='bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500'>
+              className='background-color hover:bg-yellow-900'>
               Submit
             </Button>
           </form>

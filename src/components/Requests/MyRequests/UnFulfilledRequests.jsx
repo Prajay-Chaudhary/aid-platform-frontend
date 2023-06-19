@@ -48,7 +48,7 @@ const UnFulfilledRequests = () => {
                   <div>
                     <Button
                       type="submit"
-                      className=" bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 "
+                      className=" background-color hover:bg-yellow-900 "
                     >
                       See Details
                     </Button>
@@ -56,7 +56,8 @@ const UnFulfilledRequests = () => {
                   <div>
                     <Button
                       type="submit"
-                      gradientDuoTone="purpleToPink"
+                      color="gray"
+                      className='hover:text-yellow-900 focus:outline-none focus:ring-4 focus:text-yellow-900 focus:ring-yellow-900 dark:focus:ring-yellow-900'
                       outline
                     >
                       Mark as Fulfilled

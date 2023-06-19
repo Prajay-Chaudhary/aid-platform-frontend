@@ -138,18 +138,19 @@ const ShowRequestDetail = () => {
           <Button
             size="lg"
             onClick={handleShareClick}
-            gradientDuoTone="purpleToPink"
+            color="gray"
+            className='hover:text-yellow-900 hover:text-yellow-900 focus:outline-none focus:ring-4 focus:text-yellow-900 focus:ring-yellow-900 dark:focus:ring-yellow-900'
             outline>
             <span>Share</span>  <span><ShareIcon className="h-6 w-6 txt-color ml-2" /></span>
           </Button>
         </div>
         <div>
           <Button
-            gradientMonochrome="teal"
+            className='background-color hover:bg-yellow-900'
             type='submit'
             onClick={handleClicked}
             size="lg"
-          ><span>Fulfill</span> <span><HandRaisedIcon className="h-6 w-6 txt-color ml-2" /></span>
+          ><span>Fulfill</span> <span><HandRaisedIcon className="h-6 w-6 text-black ml-2" /></span>
           </Button>
         </div>
       </div>

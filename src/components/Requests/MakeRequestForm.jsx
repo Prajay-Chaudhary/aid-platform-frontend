@@ -183,7 +183,7 @@ const MakeRequestForm = ({ setModalOn }) => {
                 </div>
               </div>
               <div className="flex justify-center">
-                <Button type="submit" className=" bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 " >
+                <Button type="submit" className=" background-color hover:bg-yellow-900 " >
                   Submit
                 </Button>
               </div>

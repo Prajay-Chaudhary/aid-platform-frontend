@@ -131,7 +131,7 @@ function ConversationPage() {
             <Button
               type="submit"
               size="lg"
-              className='bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mt-1'
+              className='bg-white txt-color hover:bg-yellow-900 focus:outline-none focus:ring-4 focus:ring-yellow-900 dark:focus:ring-yellow-900  mt-1'
             >
               Send
             </Button>

@@ -69,7 +69,7 @@ function ChatPage() {
                   to={`/chat/${interacted_user_id}`}
                   key={index}
                   className={`group block max-w-xs mx-0 md:mx-auto rounded-lg py-2 md:p-6 ${interacted_user_id === selectedUserId
-                    ? 'text-white background-color border-solid border-2 border-yellow-500'
+                    ? 'text-white background-color border-solid border-2 border-yellow-900'
                     : 'ring-slate-900/5 bg-white'
                     } shadow-lg space-y-1 hover:bg-yellow-600 hover:ring-sky-500`}
                   onClick={() => handleConversationClick(interacted_user_id)}

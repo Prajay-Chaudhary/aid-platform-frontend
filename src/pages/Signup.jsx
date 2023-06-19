@@ -152,7 +152,7 @@ const Signup = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </div>
-            <Button type="submit" className='bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 rounded-full'>
+            <Button type="submit" className='background-color hover:bg-yellow-900 rounded-full'>
               SignIn
             </Button>
             {error && < span className='text-red-600 mt-1'>Something went wrong!</span>}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Avatar } from 'flowbite-react';
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { AdjustmentsHorizontalIcon, HandRaisedIcon, ClipboardDocumentListIcon, ShareIcon } from "@heroicons/react/24/outline";
@@ -8,17 +8,42 @@ import L from 'leaflet';
 const ShowRequestDetail = () => {
 
   const location = useLocation();
+  const token = JSON.parse(sessionStorage.getItem('token'));
+  const current_user = JSON.parse(sessionStorage.getItem('user'));
+  const [fulfillement, setFulfillement] = useState([]);
   const { request } = location.state || {}; //variable will be assigned the value of location.state.request
 
   if (!request) {
     return null; // Render nothing if request is null or undefined
   }
 
-  const handleClicked = () => {
+  const handleClicked = async (e) => {
+    const fulfillmentData = {
+      user_id: current_user.id, // Replace with the actual current user ID
+      request_id: request.id
+    }
     // will be redirected to the conversation page with the request.owner_id as a route parameter.
     window.location = `/chat/${request.owner_id}`;
 
-  };
+    //Send a POST request to the fulfillment controller
+    try {
+      const response = await fetch('http://localhost:3001/fulfillments', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'accept': 'application/json',
+          'Authorization': `Bearer ${token}` // send authorized token to the server
+        },
+        body: JSON.stringify(fulfillmentData)
+      });
+      const data = await response.json()
+      setFulfillement(data)
+      console.log('Fulfillment created:', data);
+    } catch (error) {
+      // Handle the error
+      console.error('Error creating fulfillment:', error);
+    }
+  }
 
 
   //to share the modal details to another platform

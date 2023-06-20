@@ -76,7 +76,7 @@ function ChatPage() {
                 >
                   <div className='flex space-x-4'>
                     <div className='pl-2 md:pl-0'>
-                      <Avatar img='https://flowbite.com/docs/images/people/profile-picture-5.jpg' rounded={true} />
+                      <Avatar rounded />
                     </div>
                     <div>
                       <span className='font-bold text-xl md:text-2xl mr-2'>{interacted_fname}</span>

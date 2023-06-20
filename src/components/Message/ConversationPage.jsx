@@ -90,10 +90,7 @@ function ConversationPage() {
           <div className="p-3 bg-white-400 rounded-lg shadow-lg">
             <div className='flex space-x-2 justify-center'>
               <div>
-                <Avatar
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
+                <Avatar rounded />
               </div>
               <div>
                 <h1 className='font-bold text-red-600 text-2xl  mb-3'>{name}</h1>

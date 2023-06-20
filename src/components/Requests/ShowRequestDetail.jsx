@@ -85,10 +85,7 @@ const ShowRequestDetail = () => {
           </div>
           <div className='flex flex-row'>
             <div className='mr-5'>
-              <Avatar
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                alt="image"
-                rounded={true} />
+              <Avatar rounded />
             </div>
             <div className='flex flex-col mb-1'>
               <div>

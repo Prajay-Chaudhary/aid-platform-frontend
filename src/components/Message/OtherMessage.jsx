@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Avatar } from 'flowbite-react';
 
 const OtherMessage = ({ message, messadeDate, messageTime }) => {
   return (
@@ -9,12 +9,21 @@ const OtherMessage = ({ message, messadeDate, messageTime }) => {
       </div>
       <div className='flex flex-col'>
 
-        <div className="background-color my-2 rounded-full text-white py-3 px-4 w-fit">
-          {message}
+        <div className='flex flex-row'>
+          <div className='mr-1'>
+            <Avatar rounded />
+          </div>
+          <div className='flex flex-col h-fit w-fit'>
+            <div className="background-color rounded-full text-white py-3 px-4 w-fit">
+              <div>
+                {message}
+              </div>
+            </div>
+            <span className='text-zinc-600 text-xs w-fit self-center mt-1'>
+              {messageTime}
+            </span>
+          </div>
         </div>
-        <span className='text-zinc-600 text-xs w-fit self-start'>
-          {messageTime}
-        </span>
       </div>
     </>
   )

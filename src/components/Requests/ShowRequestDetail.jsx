@@ -175,6 +175,7 @@ const ShowRequestDetail = () => {
             type='submit'
             onClick={handleClicked}
             size="lg"
+            disabled={request?.owner_id === current_user.id} //disabled the button if current user
           ><span>Fulfill</span> <span><HandRaisedIcon className="h-6 w-6 text-black ml-2" /></span>
           </Button>
         </div>

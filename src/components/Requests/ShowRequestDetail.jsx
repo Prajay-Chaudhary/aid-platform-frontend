@@ -104,8 +104,10 @@ const ShowRequestDetail = () => {
                 <img className="h-full w-full lg:h-96 lg:w-{150} rounded-lg" src={request.image} alt="request image" />
               </div>
               <div className="pr-4 mb-8">
-                <p className='text-2xl font-bold txt-color'>DESCRIPTIONS</p>
-                <p className="text-black-600 min-h-40 max-h-96 overflow-y-auto">{request.description}</p>
+                <p className='text-2xl font-bold txt-color mb-3'>DESCRIPTIONS</p>
+                <div className='h-[300px] bg-white rounded-lg'>
+                  <p className="text-black-600 min-h-40 max-h-96 overflow-y-auto p-3">{request.description}</p>
+                </div>
               </div>
             </div>
             <div className="lg:w-6/12 flex flex-col">

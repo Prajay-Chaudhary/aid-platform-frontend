@@ -36,13 +36,17 @@ const FulfilledRequests = () => {
         {requests && requests?.map((request, index) => {
           return (
             <div key={request.id} className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-slate-100 hover:shadow-lg">
-              <a href="#">
-                <img className="rounded-t-lg" src={request.image} alt="" />
-              </a>
-              <div className="p-5">
+              <div className='flex justify-center'>
                 <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                  <img className="rounded-t-lg h-[225px] w-full" src={request.image} alt="request image" />
                 </a>
+              </div>
+              <div className="p-5">
+                <div className='h-[75px]'>
+                  <a href="#">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                  </a>
+                </div>
                 <div className='flex justify-center'>
                   <Button
                     type="submit"

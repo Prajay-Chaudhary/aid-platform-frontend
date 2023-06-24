@@ -14,9 +14,11 @@ const OtherMessage = ({ message, messadeDate, messageTime }) => {
             <Avatar rounded />
           </div>
           <div className='flex flex-col h-fit w-fit'>
-            <div className="background-color rounded-full text-white py-3 px-4 w-fit">
+            <div className="background-color rounded-2xl py-3 px-4 w-fit">
               <div>
-                {message}
+                <p className='max-w-[500px] text-white'>
+                  {message}
+                </p>
               </div>
             </div>
             <span className='text-zinc-600 text-xs w-fit self-center mt-1'>

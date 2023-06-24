@@ -6,9 +6,9 @@ const Chat = () => {
     <>
       <div>
         <div className='md:flex h-full w-screen md:m-0 rounded-lg'>
-          <div className='w-2/5 m-auto'><ChatPage /></div>
+          <div className='w-screen md:w-4/12'><ChatPage /></div>
           <div className="h-0 md:h-[1000px]  bg-green-700 w-0 md:w-[7px]"></div>
-          <div className='w-3/5 m-auto'><ConversationPage /></div>
+          <div className='w:screen md:w-8/12'><ConversationPage /></div>
         </div>
       </div>
     </>

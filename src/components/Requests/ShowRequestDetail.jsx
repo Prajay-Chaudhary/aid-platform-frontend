@@ -19,9 +19,10 @@ const ShowRequestDetail = () => {
 
   const handleClicked = async (e) => {
     const fulfillmentData = {
-      user_id: current_user.id, // Replace with the actual current user ID
+      user_id: current_user.id,
       request_id: request.id
     }
+
     // will be redirected to the conversation page with the request.owner_id as a route parameter.
     window.location = `/chat/${request.owner_id}`;
 
@@ -101,11 +102,11 @@ const ShowRequestDetail = () => {
           <div className="lg:flex flex-row">
             <div className="lg:w-6/12 flex flex-col lg:mr-8">
               <div className="mb-4">
-                <img className="h-full w-full lg:h-96 lg:w-{150} rounded-lg" src={request.image} alt="request image" />
+                <img className="object-contain h-full w-full lg:h-96 lg:w-{150} rounded-lg" src={request.image} alt="request image" />
               </div>
               <div className="pr-4 mb-8">
                 <p className='text-2xl font-bold txt-color mb-3'>DESCRIPTIONS</p>
-                <div className='h-[300px] bg-white rounded-lg'>
+                <div className='h-[200px] bg-white rounded-lg'>
                   <p className="text-black-600 min-h-40 max-h-96 overflow-y-auto p-3">{request.description}</p>
                 </div>
               </div>

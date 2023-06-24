@@ -4,6 +4,7 @@ import { Button, TextInput } from 'flowbite-react';
 import MyMessage from './MyMessage';
 import OtherMessage from './OtherMessage';
 import { Avatar } from 'flowbite-react'
+import chat2 from '../../images/chat2.png'
 
 function ConversationPage() {
   const [messages, setMessages] = useState([]);
@@ -83,59 +84,73 @@ function ConversationPage() {
 
 
   return (
-    user_id && (
-      <>
-        <div className="p-2 md:p-6 min-h-screen">
+    <>
+      <div>
+        {user_id ? (
+          <div className="p-2 md:p-6 min-h-screen">
 
-          <div className="p-3 bg-white-400 rounded-lg shadow-lg">
-            <div className='flex space-x-2 justify-center'>
-              <div>
-                <Avatar rounded />
-              </div>
-              <div>
-                <h1 className='font-bold text-red-600 text-2xl  mb-3'>{name}</h1>
+            <div className="p-3 bg-white-400 rounded-lg shadow-lg">
+              <div className='flex space-x-2 justify-center'>
+                <div>
+                  <Avatar rounded />
+                </div>
+                <div>
+                  <h1 className='font-bold text-red-600 text-2xl  mb-3'>{name}</h1>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="message-list-container flex flex-col text-center h-screen overflow-y-auto">
+            <div className="message-list-container flex flex-col text-center h-screen overflow-y-auto">
 
-            {/* creates a new array with the elements of messages in reverse order.
+              {/* creates a new array with the elements of messages in reverse order.
             Then, the map function is used to iterate over the reversed array and render the messages accordingly */}
-            {messages.slice(0).reverse().map((message, index) => {
-              // { message.sender_id === user_id ? setName(message.sender_first_name) : "" }
-              //setName((_e) => _e = "message.sender_first_name")
-              //console.log("testtttttt :", message, current_user.id)
-              return (<div key={index}>
-                {message.sender_id === current_user.id ? <MyMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} /> : <OtherMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} />}
-              </div>)
+              {messages.slice(0).reverse().map((message, index) => {
+                // { message.sender_id === user_id ? setName(message.sender_first_name) : "" }
+                //setName((_e) => _e = "message.sender_first_name")
+                //console.log("testtttttt :", message, current_user.id)
+                return (<div key={index}>
+                  {message.sender_id === current_user.id ? <MyMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} /> : <OtherMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} />}
+                </div>)
 
-            })}
-            <div ref={messagesEndRef} /> {/* Use the ref to scroll to the latest message */}
+              })}
+              <div ref={messagesEndRef} /> {/* Use the ref to scroll to the latest message */}
 
-          </div>
-          <form
-            className="sticky top-[100vh] background-color flex py-5 px-6 rounded-lg drop-shadow-lg hover:drop-shadow-2xl"
-            onSubmit={handleFormSubmit}
-          >
-            <TextInput
-              id="messageInput"
-              name="body"
-              type="text"
-              className="flex-1 py-2 px-1 mr-2 rounded-lg"
-              placeholder="Type message..."
-              required={true}
-            />
-            <Button
-              type="submit"
-              size="lg"
-              className='bg-white txt-color hover:bg-yellow-900 focus:outline-none focus:ring-4 focus:ring-yellow-900 dark:focus:ring-yellow-900  mt-1'
+            </div>
+            <form
+              className="sticky top-[100vh] background-color flex py-5 px-6 rounded-lg drop-shadow-lg hover:drop-shadow-2xl"
+              onSubmit={handleFormSubmit}
             >
-              Send
-            </Button>
-          </form>
-        </div>
-      </>
-    )
+              <TextInput
+                id="messageInput"
+                name="body"
+                type="text"
+                className="flex-1 py-2 px-1 mr-2 rounded-lg"
+                placeholder="Type message..."
+                required={true}
+              />
+              <Button
+                type="submit"
+                size="lg"
+                className='bg-white txt-color hover:bg-yellow-900 focus:outline-none focus:ring-4 focus:ring-yellow-900 dark:focus:ring-yellow-900  mt-1'
+              >
+                Send
+              </Button>
+            </form>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full mt-14">
+            <div>
+              <img src={chat2} alt="chat image" class="mx-auto object-contain h-[350px]" />
+            </div>
+            <div className='flex flex-col justify-center text-center mt-2'>
+              <h1 className='text-2xl font-extrabold'>
+                Conversation page
+              </h1>
+              <p>Send and receive messages here. Just select an user from the user list.</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

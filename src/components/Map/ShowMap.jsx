@@ -140,7 +140,7 @@ const ShowMap = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {request.map((request) => {
-            const { id, latitude, longitude, request_type, image, description } = request;
+            const { id, latitude, longitude, request_type, image, description, title } = request;
             const isOnetime = request_type === 'onetime';
             const markerIconToUse = isOnetime ? markerIcon : markerIcon2;
 
@@ -170,7 +170,7 @@ const ShowMap = () => {
                           </h5>
                         </div>
                         <div>
-                          <p className="font-normal text-gray-700 dark:text-gray-400">{description}</p>
+                          <p className="font-normal text-gray-700 dark:text-gray-400">{title}</p>
                         </div>
                         <div>
                           <Button size="sm" className="background-color hover:bg-yellow-900" onClick={() => handleClicked(request)}>

@@ -9,8 +9,10 @@ const MyMessage = ({ message, messadeDate, messageTime }) => {
       </div>
       <div className='flex flex-col float-right'>
 
-        <div className="bg-red-200 my-2 rounded-full txt-color py-3 px-4 w-fit">
-          {message}
+        <div className="bg-red-200 my-2 rounded-2xl txt-color py-3 px-4 w-fit">
+          <p className='max-w-[500px]'>
+            {message}
+          </p>
         </div>
         <span className='text-zinc-600 text-xs w-fit self-end'>
           {messageTime}

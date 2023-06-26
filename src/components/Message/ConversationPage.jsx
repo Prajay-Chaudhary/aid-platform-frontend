@@ -95,7 +95,7 @@ function ConversationPage() {
                   <Avatar rounded />
                 </div>
                 <div>
-                  <h1 className='font-bold text-red-600 text-2xl  mb-3'>{name}</h1>
+                  <h1 className='font-bold text-red-600 text-2xl  mb-3'>{user_id}</h1>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@ function ConversationPage() {
                 //setName((_e) => _e = "message.sender_first_name")
                 //console.log("testtttttt :", message, current_user.id)
                 return (<div key={index}>
-                  {message.sender_id === current_user.id ? <MyMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} /> : <OtherMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} />}
+                  {message.sender_id === current_user.id ? <MyMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} /> : <OtherMessage firstName={message.sender_first_name} lastName={message.sender_last_name} message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} />}
                 </div>)
 
               })}
@@ -139,7 +139,7 @@ function ConversationPage() {
         ) : (
           <div className="flex flex-col items-center justify-center h-full mt-14">
             <div>
-              <img src={chat2} alt="chat image" class="mx-auto object-contain h-[350px]" />
+              <img src={chat2} alt="chat image" className="mx-auto object-contain h-[350px]" />
             </div>
             <div className='flex flex-col justify-center text-center mt-2'>
               <h1 className='text-2xl font-extrabold'>

@@ -95,7 +95,7 @@ function ConversationPage() {
                   <Avatar rounded />
                 </div>
                 <div>
-                  <h1 className='font-bold text-red-600 text-2xl  mb-3'>{user_id}</h1>
+                  <h1 className='font-bold txt-color text-2xl  mb-3'></h1>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@ function ConversationPage() {
 
               {/* creates a new array with the elements of messages in reverse order.
             Then, the map function is used to iterate over the reversed array and render the messages accordingly */}
-              {messages.slice(0).reverse().map((message, index) => {
+              {messages.map((message, index) => {
                 // { message.sender_id === user_id ? setName(message.sender_first_name) : "" }
                 //setName((_e) => _e = "message.sender_first_name")
                 //console.log("testtttttt :", message, current_user.id)
@@ -137,17 +137,18 @@ function ConversationPage() {
             </form>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-full mt-14">
-            <div>
-              <img src={chat2} alt="chat image" className="mx-auto object-contain h-[350px]" />
-            </div>
-            <div className='flex flex-col justify-center text-center mt-2'>
-              <h1 className='text-2xl font-extrabold'>
-                Conversation page
-              </h1>
-              <p>Send and receive messages here. Just select an user from the user list.</p>
+          <div className="flex flex-col items-center justify-center h-screen">
+            <div className="flex flex-col items-center justify-center">
+              <img src={chat2} alt="chat image" className="object-contain h-96" />
+              <div className="text-center mt-4">
+                <h1 className="text-2xl font-extrabold">
+                  Conversation page
+                </h1>
+                <p>Send and receive messages here. Just select a user from the user list.</p>
+              </div>
             </div>
           </div>
+
         )}
       </div>
     </>

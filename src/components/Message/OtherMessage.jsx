@@ -18,7 +18,7 @@ const OtherMessage = ({ message, messadeDate, messageTime, firstName, lastName }
               content={fullName}
               placement="left"
             >
-              <p className='text-red-500 text-sm'>{firstInitial} {lastInitial}</p>
+              <p className='text-black font-bold text-sm'>{firstInitial} {lastInitial}</p>
             </Tooltip>
           </div>
           <div className="background-color rounded-2xl py-3 px-4 w-fit">

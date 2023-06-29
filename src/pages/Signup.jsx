@@ -41,7 +41,7 @@ const Signup = () => {
   return (
     <>
       <div className="w-full h-screen flex items-center justify-center m-auto">
-        <div className="max-w-lg w-full m-auto mt-10 p-5 bg-white border rounded drop-shadow-md hover:drop-shadow-2xl">
+        <div className="max-w-lg w-full m-auto mt-10 p-5 bg-white border rounded drop-shadow-md hover:drop-shadow-2xl rounded-lg">
           <h2 className="font-medium text-2xl text-center">Signup</h2>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div>

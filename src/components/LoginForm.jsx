@@ -24,7 +24,7 @@ function LoginForm({ handleLogin }) {
   return (
     <>
       <div className="w-full h-screen flex items-center justify-center m-auto ">
-        <div className="max-w-md w-full m-auto mt-20 md:mt-48 p-5 bg-white border drop-shadow-md hover:drop-shadow-2xl">
+        <div className="max-w-md w-full m-auto mt-20 md:mt-48 p-5 bg-white border drop-shadow-md hover:drop-shadow-2xl rounded-lg">
           <h2 className="font-medium text-2xl text-center">Login</h2>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div>
@@ -86,7 +86,9 @@ function LoginForm({ handleLogin }) {
               <p> Not registered yet,
                 <a href="/signup" className="no-underline hover:underline text-blue-500 ml-0.5" >Signup</a></p></div>
             <div>
-              <p className="no-underline hover:underline text-blue-500 ml-0.5">forget password?</p>
+              <p className="no-underline hover:underline text-blue-500 ml-0.5">
+                <a href="/password-reset" className="no-underline hover:underline text-blue-500 ml-0.5" >forget password?</a>
+              </p>
             </div>
           </div>
         </div>

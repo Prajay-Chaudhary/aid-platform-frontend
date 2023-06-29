@@ -22,6 +22,14 @@ const TopBar = () => {
     navigate('/my-requests') // redirect to my AllMyRequest page
   }
 
+  const redirectToProfile = () => {
+    navigate('/profile') // redirect to my profile page
+  }
+
+  const redirectToChangePassword = () => {
+    navigate('update-password') // redirect to Change Password page
+  }
+
   const handleLogout = () => {
     sessionStorage.removeItem('token');
     //setUserData(null);
@@ -55,10 +63,10 @@ const TopBar = () => {
                   {user.email}
                 </span>
               </Dropdown.Header>
-              <Dropdown.Item>
+              <Dropdown.Item onClick={redirectToProfile}>
                 <p className="txt-color">My Profile</p>
               </Dropdown.Item>
-              <Dropdown.Item>
+              <Dropdown.Item onClick={redirectToChangePassword}>
                 <p className="txt-color">Change Password</p>
               </Dropdown.Item>
               <Dropdown.Item onClick={redirectToAllMyRequest}>

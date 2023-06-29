@@ -11,6 +11,10 @@ import Chat from './pages/Chat';
 import RequestDetail from './pages/RequestDetail';
 import UserContext from './context/UserContext';
 import MyRequest from './pages/MyRequest';
+import ChangePassword from './pages/ChangePassword';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import PasswordReseSendtLink from './pages/PasswordReseSendtLink';
 
 function App() {
 
@@ -26,6 +30,7 @@ function App() {
     <UserContext.Provider value={{ token }}>
       <Router>
         <>
+          <ToastContainer />
           <TopBar />
           <Routes>
             <Route exact path="/" element={<Home />} />
@@ -37,6 +42,8 @@ function App() {
             <Route path="/chat/:user_id" element={token ? <Chat /> : <Login />} />
             <Route path="/request-details" element={token ? <RequestDetail /> : <Login />} />
             <Route path="/my-requests" element={token ? <MyRequest /> : <Login />} />
+            <Route path="/update-password" element={token ? <ChangePassword /> : <Login />} />
+            <Route exact path="/password-reset" element={<PasswordReseSendtLink />} />
           </Routes>
         </>
       </Router>

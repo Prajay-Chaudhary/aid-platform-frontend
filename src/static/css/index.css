@@ -35,3 +35,8 @@ ul {
 .txt-color {
     color: #564D00 !important;
 }
+
+.error {
+    border: 1px solid red;
+    border-radius: 10px;
+}

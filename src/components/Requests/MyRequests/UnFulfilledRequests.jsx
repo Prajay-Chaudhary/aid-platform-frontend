@@ -72,18 +72,10 @@ const UnFulfilledRequests = () => {
                   <div className="p-5">
                     <div className='h-[75px]'>
                       <a href="#">
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-1">{request.title}</h5>
                       </a>
                     </div>
-                    <div className='flex flex-row justify-center gap-2'>
-                      <div>
-                        <Button
-                          type="submit"
-                          className=" background-color hover:bg-yellow-900 "
-                        >
-                          See Details
-                        </Button>
-                      </div>
+                    <div className='flex justify-center gap-2'>
                       <div>
                         <Button
                           type="submit"

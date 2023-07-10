@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Tooltip } from 'flowbite-react';
 
-const OtherMessage = ({ message, messadeDate, messageTime, firstName, lastName }) => {
+const OtherMessage = ({ message, messadeDate, messageTime, firstName, lastName, setPartnerName }) => {
   const firstInitial = firstName ? firstName.slice(0, 1) : '';
   const lastInitial = lastName ? lastName.slice(0, 1) : '';
   const fullName = firstName + ' ' + lastName;
+
+  useEffect(() => {
+    setPartnerName(firstName + " " + lastName)
+  }, [])
 
   return (
     <>

@@ -28,25 +28,29 @@ const ArchivedRequests = () => {
   // update request sitation to unfulfilled
 
   const handleSubmit = async (id) => {
-
     try {
       const response = await fetch(`http://localhost:3001/requests/${id}`, {
         method: 'PATCH',
-        body: JSON.stringify({ request_status: 'unfulfilled' }),
+        body: JSON.stringify({ request_status: "unfulfilled" }),
         headers: {
           'content-type': 'application/json',
           'accept': 'application/json',
           'Authorization': `Bearer ${token}` // send authorized token to the server
         }
       });
-      const data = await response.json()
-      const newData = requests.filter(req => req.id != id) // this function allow to filter request array and return the array of request without include current request that we just passed for unfulfilled.
-      setRequests(newData)
-      console.log("data passed for unfulfilled:", data)
+      if (response.ok) {
+        const updatedRequest = await response.json();
+        console.log("Request updated:", updatedRequest);
+        // Perform any necessary actions after successful update
+      } else {
+        throw new Error('Failed to update the request');
+      }
     } catch (error) {
-      alert(" Please Try later ")
+      alert("Please try again later");
+      console.error(error);
     }
-  }
+  };
+
 
   useEffect(() => {
     getRequests()
@@ -69,18 +73,10 @@ const ArchivedRequests = () => {
                   <div className="p-5">
                     <div className='h-[75px]'>
                       <a href="#">
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-1">{request.title}</h5>
                       </a>
                     </div>
-                    <div className='flex flex-row justify-center gap-2'>
-                      <div>
-                        <Button
-                          type="submit"
-                          className=" background-color hover:bg-yellow-900 "
-                        >
-                          See Details
-                        </Button>
-                      </div>
+                    <div className='flex justify-center gap-2'>
                       <div>
                         <Button
                           type="submit"

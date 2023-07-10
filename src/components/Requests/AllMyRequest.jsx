@@ -64,7 +64,7 @@ const AllMyRequest = () => {
               < FulfilledRequests />
             </Tabs.Item>
             <Tabs.Item
-              title="Archived"
+              title="Expired"
             >
               < ArchivedRequests />
             </Tabs.Item>

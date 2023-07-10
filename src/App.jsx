@@ -15,6 +15,7 @@ import ChangePassword from './pages/ChangePassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PasswordReseSendtLink from './pages/PasswordReseSendtLink';
+import FulfilledDetails from './pages/FulfilledDetails';
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
             <Route path="/my-requests" element={token ? <MyRequest /> : <Login />} />
             <Route path="/update-password" element={token ? <ChangePassword /> : <Login />} />
             <Route exact path="/password-reset" element={<PasswordReseSendtLink />} />
+            <Route path="/fulfilled-details/:id" element={token ? <FulfilledDetails /> : <Login />} />
           </Routes>
         </>
       </Router>

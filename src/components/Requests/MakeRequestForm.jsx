@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import { Label, Textarea, Radio, FileInput, Button, TextInput } from 'flowbite-react';
 import { MapPinIcon, DocumentIcon, DocumentTextIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
@@ -21,6 +22,16 @@ const MakeRequestForm = ({ setModalOn }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
+    // Manual validation for address input
+    if (!address) {
+      toast.error("Please select an address");
+      return;
+    }
+
+
+
     const formData = new FormData(); // Create a new FormData object
     formData.append('request[owner_id]', current_user.id);
     formData.append('request[address]', address);
@@ -36,25 +47,34 @@ const MakeRequestForm = ({ setModalOn }) => {
         headers: {
           'Authorization': `Bearer ${token}`
         },
-        body: formData // Send the form data instead of JSON
+        body: formData
       });
-      const json = await res.json();
-      setRequestData(json);
-      console.log("request data:", json);
-      window.location = '/requests'; // Navigate to the request page
+
+      if (res.ok) {
+        const json = await res.json();
+        setRequestData(json);
+        console.log("request data:", json);
+        toast.success("Request has been created successfully!");
+      } else {
+        const errorResponse = await res.json();
+        console.log("Error response:", errorResponse);
+        toast.error(errorResponse.message || "Something went wrong");
+      }
     } catch (err) {
       console.error(err);
+      toast.error("An error occurred. Please try again.");
     }
+
   };
 
-
+  //192.168.1.170:5717
   return (
     <>
-      <div className="bg-gray-800 bg-opacity-50 fixed inset-0 flex items-center justify-center shadow-lg z-50">
+      <div className="bg-gray-800 px-4 bg-opacity-50 fixed inset-0 flex items-center justify-center shadow-lg z-50">
         <div className="flex h-screen w-screen justify-center items-center ">
-          <div className="flex-col justify-center bg-white py-10 px-8 rounded-xl shadow-xl">
-            <div className='flex float-right pl-0.5'>
-              <button onClick={handleCancelClick} className='absolute  right-30 top-10'>
+          <div className="relative mt-8 flex-col justify-center bg-white py-10 px-8 rounded-xl shadow-xl">
+            <div className='absolute -top-[40px] md:-top-[30px] -right-[30px] md:-right-[50px]'>
+              <button onClick={handleCancelClick} className=''>
                 <XCircleIcon className="h-9 w-20 text-red-600" />
               </button>
             </div>
@@ -76,7 +96,8 @@ const MakeRequestForm = ({ setModalOn }) => {
                   </div>
                   <div className='mb-3'>
                     <GooglePlacesAutocomplete
-                      apiKey="AIzaSyDnYe4Bf7o8tg27Hkuf7vd_ynFBHcXrfvM"
+                      required
+                      apiKey="AIzaSyCZ0M7Vq0tuaUL7LrGd7ViN2iYl2YUZ96I"
                       selectProps={{
                         onChange: (address) => setAddress(address.label),
                       }}
@@ -99,7 +120,10 @@ const MakeRequestForm = ({ setModalOn }) => {
                     htmlFor="base"
                     id='title:'
                     size='md'
+                    placeholder="should be maximum 50 characters."
+                    required
                     className='mb-2'
+                    maxLength={50}
                     onChange={(e) => setTitle(e.target.value)}
 
                   >
@@ -139,6 +163,7 @@ const MakeRequestForm = ({ setModalOn }) => {
                     <Radio
                       id="OneTimeHelp"
                       name="requestType"
+                      required
                       value="OneTimeHelp"
                       onChange={() => setRequestType("One Time Help")} // Set the selected request type directly
                     />
@@ -177,6 +202,7 @@ const MakeRequestForm = ({ setModalOn }) => {
                     helperText="accepeted .jpg, .jpeg, .png only. Must be less than 5mb."
                     id="file"
                     name="image"
+                    required
                     multiple={false}
                     onChange={(e) => setImages(e.target.files[0])}
                   />

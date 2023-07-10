@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'flowbite-react';
+import { useNavigate } from 'react-router-dom';
 
 const FulfilledRequests = () => {
   const [requests, setRequests] = useState([]);
   const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
+  const navigate = useNavigate();
+
+
+  const handleSubmit = (id) => {
+    navigate(`/fulfilled-details/${id}`);
+  }
 
   // get all my fulfilled requests that the current user have.
   const getRequests = async (e) => {
@@ -46,13 +53,16 @@ const FulfilledRequests = () => {
                   <div className="p-5">
                     <div className='h-[75px]'>
                       <a href="#">
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-1">{request.title}</h5>
                       </a>
                     </div>
                     <div className='flex justify-center'>
                       <Button
                         type="submit"
-                        className=" background-color hover:bg-yellow-900 "
+                        color="gray"
+                        className='hover:text-yellow-900 focus:outline-none focus:ring-4 focus:text-yellow-900 focus:ring-yellow-900 dark:focus:ring-yellow-900'
+                        outline
+                        onClick={() => handleSubmit(request.id)}
                       >
                         See Details
                       </Button>

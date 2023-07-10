@@ -44,7 +44,7 @@ const LoginForm = ({ handleLogin }) => {
             {({ errors, touched }) => (
               <Form className="flex flex-col gap-4">
                 <div>
-                  <div className="mb-2 block">
+                  <div className="mb-3 block">
                     <Label htmlFor="email">Your email</Label>
                   </div>
                   <Field
@@ -57,33 +57,29 @@ const LoginForm = ({ handleLogin }) => {
                   <ErrorMessage name="email" component="div" className="text-red-500" />
                 </div>
 
-                <div className="mb-2 block">
+                <div className="block">
                   <Label htmlFor="password">Your password</Label>
                 </div>
-                <div className="flex-row gap-2">
-                  <div className="flex-row mb-1">
-                    <Field
-                      type={isPasswordVisible ? "text" : "password"}
-                      name="password"
-                      id="password"
-                      autoComplete="current-password"
-                      className={`form-input ${errors.password && touched.password ? 'error' : ''} w-full rounded-lg`}
-                    />
-                  </div>
-                  <div>
-                    <Button
-                      type="button"
-                      onClick={togglePasswordVisibility}
-                      className="background-color hover:bg-yellow-900"
-                    >
-                      {isPasswordVisible ? (
-                        <EyeIcon className="h-4 w-4 text-white-500" />
-                      ) : (
-                        <EyeSlashIcon className="h-4 w-4 text-white-500" />
-                      )}
-                    </Button>
-                  </div>
-                  <ErrorMessage name="password" component="div" className="text-red-500" />
+                <Field
+                  type={isPasswordVisible ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  autoComplete="current-password"
+                  className={`form-input ${errors.password && touched.password ? 'error' : ''} w-full rounded-lg`}
+                />
+                <ErrorMessage name="password" component="div" className="text-red-500" />
+                <div>
+                  <Button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className="bg-white border-yellow-900"
+                  >
+                    {isPasswordVisible ? (
+                      <EyeIcon className="h-4 w-4 text-white" />
+                    ) : (
+                      <EyeSlashIcon className="h-4 w-4 text-black" />
+                    )}
+                  </Button>
                 </div>
                 <div className="flex items-center gap-2">
                   <Checkbox id="remember" />

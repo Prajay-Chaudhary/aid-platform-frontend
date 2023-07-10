@@ -62,7 +62,7 @@ function ChatPage() {
                   <div className='pl-2 md:pl-0'>
                     <Avatar rounded />
                   </div>
-                  <div>
+                  <div className='line-clamp-1'>
                     <span className='font-bold text-xl md:text-2xl mr-2'>{interacted_fname}</span>
                     <span className='font-bold text-xl md:text-2xl'>{interacted_lname}</span>
                   </div>

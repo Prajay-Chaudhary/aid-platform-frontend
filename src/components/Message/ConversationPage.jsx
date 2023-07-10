@@ -9,7 +9,7 @@ import chat2 from '../../images/chat2.png'
 function ConversationPage() {
   const [messages, setMessages] = useState([]);
   const [reloadMessages, setReloadMessages] = useState(false);
-  const [name, setName] = useState("");
+  const [partnerName, setPartnerName] = useState("");
   const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
   const { user_id } = useParams();
@@ -95,7 +95,7 @@ function ConversationPage() {
                   <Avatar rounded />
                 </div>
                 <div>
-                  <h1 className='font-bold txt-color text-2xl  mb-3'></h1>
+                  <h1 className='font-bold txt-color text-2xl  mb-3'>{partnerName}</h1>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@ function ConversationPage() {
                 //setName((_e) => _e = "message.sender_first_name")
                 //console.log("testtttttt :", message, current_user.id)
                 return (<div key={index}>
-                  {message.sender_id === current_user.id ? <MyMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} /> : <OtherMessage firstName={message.sender_first_name} lastName={message.sender_last_name} message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} />}
+                  {message.sender_id === current_user.id ? <MyMessage message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} /> : <OtherMessage firstName={message.sender_first_name} setPartnerName={setPartnerName} lastName={message.sender_last_name} message={message.message_body} messadeDate={message.message_created_on} messageTime={message.message_created_at} />}
                 </div>)
 
               })}

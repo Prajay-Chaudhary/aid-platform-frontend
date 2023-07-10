@@ -91,8 +91,17 @@ const LoginForm = ({ handleLogin }) => {
                   Submit
                 </Button>
               </Form>
+
             )}
           </Formik>
+          <div className='flex flex-row justify-between'>
+            <div className="mt-4">
+              not regestered yet? <a href="/signup" className="no-underline hover:underline text-blue-500">sign up</a> here.
+            </div>
+            <div className="mt-4">
+              <a href="/password-reset" className="no-underline hover:underline text-blue-500">forgot password?</a>
+            </div>
+          </div>
         </div>
       </div>
     </>

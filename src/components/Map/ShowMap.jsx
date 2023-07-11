@@ -6,6 +6,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { FaLocationArrow } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import API_BASE_URL from "../../config/apiConfig";
+import { token } from "../../utils/auth";
 import L from 'leaflet';
 import {
   MapContainer,
@@ -20,7 +21,6 @@ const ShowMap = () => {
   //mapRef is used to reference the MapContainer component
   const mapRef = useRef();
   const [request, setRequest] = useState([]);
-  const token = JSON.parse(sessionStorage.getItem('token'));
   const [loading, setLoading] = useState(true)
   const [selectedRequest, setSelectedRequest] = useState(null);
   const navigate = useNavigate();

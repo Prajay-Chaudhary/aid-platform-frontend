@@ -5,6 +5,7 @@ import ShowRequestDetail from "../Requests/ShowRequestDetail"
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { FaLocationArrow } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from "../../config/apiConfig";
 import L from 'leaflet';
 import {
   MapContainer,
@@ -104,7 +105,7 @@ const ShowMap = () => {
   //get requests from the backend
   const fetchRequests = async () => {
     try {
-      const res = await fetch('http://localhost:3001/requests', {
+      const res = await fetch(`${API_BASE_URL}/requests`, {
         method: 'get',
         headers: {
           'content-type': 'application/json',

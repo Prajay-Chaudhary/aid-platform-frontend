@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'flowbite-react';
+import API_BASE_URL from '../../../config/apiConfig';
 
 const ArchivedRequests = () => {
   const [requests, setRequests] = useState([]);
@@ -9,7 +10,7 @@ const ArchivedRequests = () => {
   // get all my unfulfilled requests that the current user have.
   const getRequests = async (e) => {
     try {
-      const response = await fetch('http://localhost:3001/requests/archived_requests', {
+      const response = await fetch(`${API_BASE_URL}/requests/archived_requests`, {
         method: 'get',
         headers: {
           'content-type': 'application/json',
@@ -29,7 +30,7 @@ const ArchivedRequests = () => {
 
   const handleSubmit = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3001/requests/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/requests/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({ request_status: "unfulfilled" }),
         headers: {

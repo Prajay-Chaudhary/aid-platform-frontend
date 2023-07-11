@@ -3,6 +3,7 @@ import { Tabs, Button } from 'flowbite-react';
 import UnFulfilledRequests from '../Requests/MyRequests/UnFulfilledRequests';
 import FulfilledRequests from '../Requests/MyRequests/FulfilledRequests';
 import ArchivedRequests from '../Requests/MyRequests/ArchivedRequests';
+import API_BASE_URL from '../../config/apiConfig';
 
 const AllMyRequest = () => {
 
@@ -14,7 +15,7 @@ const AllMyRequest = () => {
   // get all my requests that the current user has created.
   const getRequests = async (e) => {
     try {
-      const response = await fetch('http://localhost:3001/requests/my_requests', {
+      const response = await fetch(`${API_BASE_URL}/requests/my_requests`, {
         method: 'get',
         headers: {
           'content-type': 'application/json',

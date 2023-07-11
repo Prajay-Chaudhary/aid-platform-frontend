@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
+import API_BASE_URL from '../../config/apiConfig';
 
 const FulfillmentDetails = () => {
 
@@ -12,7 +13,7 @@ const FulfillmentDetails = () => {
     // Get the conversation between the current user and the selected user
     const getVolunteers = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/requests/fulfilled-requests${id}`, {
+        const res = await fetch(`${API_BASE_URL}/requests/fulfilled-requests${id}`, {
           method: 'get',
           headers: {
             'content-type': 'application/json',

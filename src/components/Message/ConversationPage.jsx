@@ -5,6 +5,7 @@ import MyMessage from './MyMessage';
 import OtherMessage from './OtherMessage';
 import { Avatar } from 'flowbite-react'
 import chat2 from '../../images/chat2.png'
+import API_BASE_URL from '../../config/apiConfig';
 
 function ConversationPage() {
   const [messages, setMessages] = useState([]);
@@ -20,7 +21,7 @@ function ConversationPage() {
     // Get the conversation between the current user and the selected user
     const getMessages = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/messages/conversation/${user_id}`, {
+        const res = await fetch(`${API_BASE_URL}/messages/conversation/${user_id}`, {
           method: 'get',
           headers: {
             'content-type': 'application/json',
@@ -60,7 +61,7 @@ function ConversationPage() {
     };
 
     //post request to create message
-    const res = await fetch('http://localhost:3001/messages', {
+    const res = await fetch(`${API_BASE_URL}/messages`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

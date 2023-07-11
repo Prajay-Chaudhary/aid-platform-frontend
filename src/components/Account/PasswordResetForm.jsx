@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Button, TextInput } from "flowbite-react";
+import API_BASE_URL from '../../config/apiConfig';
 
 const PasswordResetForm = () => {
   const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ const PasswordResetForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/users/password/reset', {
+      const response = await fetch(`${API_BASE_URL}/users/password/reset`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

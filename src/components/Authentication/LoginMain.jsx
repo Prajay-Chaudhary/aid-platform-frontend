@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import UserContext from '../../context/UserContext';
 import LoginForm from './Forms/LoginForm';
 import { toast } from 'react-toastify';
+import API_BASE_URL from '../../config/apiConfig';
 
 
 function LoginMain() {
@@ -10,7 +11,7 @@ function LoginMain() {
   //make post request for login
   const handleLogin = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:3001/login', {
+      const response = await fetch(`${API_BASE_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user: { email, password } })

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Avatar } from 'flowbite-react';
 import { Link, useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../../config/apiConfig';
 
 function ChatPage() {
   const [allUsers, setAllUsers] = useState([]);
@@ -11,7 +12,7 @@ function ChatPage() {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await fetch('http://localhost:3001/messages', {
+        const res = await fetch(`${API_BASE_URL}/messages`, {
           method: 'get',
           headers: {
             'content-type': 'application/json',

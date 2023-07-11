@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { Label, TextInput, Button, FileInput } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../../config/apiConfig';
 
 const SignupMain = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const SignupMain = () => {
 
     //POST request to the endpoint
     try {
-      const response = await fetch('http://localhost:3001/signup', {
+      const response = await fetch(`${API_BASE_URL}/signup`, {
         method: 'POST',
         body: formData
       });

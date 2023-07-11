@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { Label, Textarea, Radio, FileInput, Button, TextInput } from 'flowbite-react';
 import { MapPinIcon, DocumentIcon, DocumentTextIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import API_BASE_URL from '../../config/apiConfig';
 
 const MakeRequestForm = ({ setModalOn }) => {
   const [requestData, setRequestData] = useState("");
@@ -42,7 +43,7 @@ const MakeRequestForm = ({ setModalOn }) => {
     console.log("form data", formData);
 
     try {
-      const res = await fetch('http://localhost:3001/requests', {
+      const res = await fetch(`${API_BASE_URL}/requests`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

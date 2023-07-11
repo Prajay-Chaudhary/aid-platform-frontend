@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../../../config/apiConfig';
 
 const FulfilledRequests = () => {
   const [requests, setRequests] = useState([]);
@@ -16,7 +17,7 @@ const FulfilledRequests = () => {
   // get all my fulfilled requests that the current user have.
   const getRequests = async (e) => {
     try {
-      const response = await fetch('http://localhost:3001/requests/fulfilled_requests', {
+      const response = await fetch(`${API_BASE_URL}/requests/fulfilled_requests`, {
         method: 'get',
         headers: {
           'content-type': 'application/json',

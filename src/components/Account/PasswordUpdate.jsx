@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { Label, Button, TextInput } from "flowbite-react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
+import API_BASE_URL from '../../config/apiConfig';
 
 const PasswordUpdate = () => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ const PasswordUpdate = () => {
   const handleSubmit = async (data) => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3001/password/update', {
+      const response = await fetch(`${API_BASE_URL}/password/update`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',

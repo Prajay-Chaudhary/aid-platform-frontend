@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'flowbite-react';
+import API_BASE_URL from '../../../config/apiConfig';
 
 const UnFulfilledRequests = () => {
 
@@ -9,7 +10,7 @@ const UnFulfilledRequests = () => {
   // get all my unfulfilled requests that the current user have.
   const getRequests = async (e) => {
     try {
-      const response = await fetch('http://localhost:3001/requests/unfulfilled_requests', {
+      const response = await fetch(`${API_BASE_URL}/requests/unfulfilled_requests`, {
         method: 'get',
         headers: {
           'content-type': 'application/json',

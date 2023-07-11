@@ -4,6 +4,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { AdjustmentsHorizontalIcon, HandRaisedIcon, ClipboardDocumentListIcon, ShareIcon } from "@heroicons/react/24/outline";
 import { useLocation } from 'react-router-dom'; //hook is used to access the location state in the target component.
 import L from 'leaflet';
+import API_BASE_URL from '../../config/apiConfig';
 
 const ShowRequestDetail = () => {
 
@@ -28,7 +29,7 @@ const ShowRequestDetail = () => {
 
     //Send a POST request to the fulfillment controller
     try {
-      const response = await fetch('http://localhost:3001/fulfillments', {
+      const response = await fetch(`${API_BASE_URL}/fulfillments`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

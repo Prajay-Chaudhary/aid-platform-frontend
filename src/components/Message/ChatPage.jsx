@@ -68,7 +68,7 @@ function ChatPage() {
                     <span className='font-bold text-xl md:text-2xl'>{interacted_lname}</span>
                   </div>
                 </div>
-                <div className='flex ml-2 md:ml-6 pl-0 md:pl-4'>
+                <div className='flex flex-row ml-6 pl-4'>
                   <div>
                     <span className='text-md group-hover:text-white'>{message_body} </span>
                   </div>

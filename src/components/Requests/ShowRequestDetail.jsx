@@ -5,11 +5,11 @@ import { AdjustmentsHorizontalIcon, HandRaisedIcon, ClipboardDocumentListIcon, S
 import { useLocation } from 'react-router-dom'; //hook is used to access the location state in the target component.
 import L from 'leaflet';
 import API_BASE_URL from '../../config/apiConfig';
+import { token } from '../../utils/auth';
 
 const ShowRequestDetail = () => {
 
   const location = useLocation();
-  const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
   const [fulfillement, setFulfillement] = useState([]);
   const { request } = location.state || {}; //variable will be assigned the value of location.state.request

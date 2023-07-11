@@ -6,12 +6,12 @@ import OtherMessage from './OtherMessage';
 import { Avatar } from 'flowbite-react'
 import chat2 from '../../images/chat2.png'
 import API_BASE_URL from '../../config/apiConfig';
+import { token } from '../../utils/auth';
 
 function ConversationPage() {
   const [messages, setMessages] = useState([]);
   const [reloadMessages, setReloadMessages] = useState(false);
   const [partnerName, setPartnerName] = useState("");
-  const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
   const { user_id } = useParams();
   const messagesEndRef = useRef(null); // Create a ref for the end of the message list & used to scroll to the latest message in the message list

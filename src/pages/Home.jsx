@@ -1,9 +1,9 @@
 import React from 'react'
 import landingPageImage from '../images/landingPageImage.png'
 import { Button } from 'flowbite-react'
+import { token } from '../utils/auth'
 
 const Home = () => {
-  const token = JSON.parse(sessionStorage.getItem('token'))
 
   if (token) {
     window.location = '/request'

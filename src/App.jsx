@@ -16,6 +16,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PasswordReseSendtLink from './pages/PasswordReseSendtLink';
 import FulfilledDetails from './pages/FulfilledDetails';
+import { token } from './utils/auth';
 
 function App() {
 
@@ -23,8 +24,6 @@ function App() {
   useEffect(() => {
     checkingToken()
   }, [])
-
-  const token = JSON.parse(sessionStorage.getItem('token'));
 
 
   return (

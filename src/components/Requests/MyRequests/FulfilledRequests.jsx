@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Button } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
 import API_BASE_URL from '../../../config/apiConfig';
+import { token } from '../../../utils/auth';
 
 const FulfilledRequests = () => {
   const [requests, setRequests] = useState([]);
-  const token = JSON.parse(sessionStorage.getItem('token'));
-  const current_user = JSON.parse(sessionStorage.getItem('user'));
   const navigate = useNavigate();
 
 

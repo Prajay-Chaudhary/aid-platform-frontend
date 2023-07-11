@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import API_BASE_URL from '../../config/apiConfig';
+import { token } from '../../utils/auth';
 
 const FulfillmentDetails = () => {
 
   const [volunteers, setVolunteers] = useState([]);
-  const token = JSON.parse(sessionStorage.getItem('token'));
   const { id } = useParams(); // Retrieve the request ID from the URL parameter
 
 

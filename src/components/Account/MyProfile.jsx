@@ -1,8 +1,8 @@
 import React from 'react'
 import { Label, TextInput, Avatar } from 'flowbite-react';
+import { user } from '../../utils/auth';
 
 const MyProfile = () => {
-  const user = JSON.parse(sessionStorage.getItem('user'));
 
   return (
     <>

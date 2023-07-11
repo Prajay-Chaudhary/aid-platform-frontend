@@ -4,12 +4,11 @@ import UnFulfilledRequests from '../Requests/MyRequests/UnFulfilledRequests';
 import FulfilledRequests from '../Requests/MyRequests/FulfilledRequests';
 import ArchivedRequests from '../Requests/MyRequests/ArchivedRequests';
 import API_BASE_URL from '../../config/apiConfig';
+import { token } from '../../utils/auth';
 
 const AllMyRequest = () => {
 
   const [requests, setRequests] = useState([])
-  const token = JSON.parse(sessionStorage.getItem('token'));
-  const current_user = JSON.parse(sessionStorage.getItem('user'));
 
 
   // get all my requests that the current user has created.

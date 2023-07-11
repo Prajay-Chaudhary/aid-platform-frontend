@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'flowbite-react';
 import API_BASE_URL from '../../../config/apiConfig';
+import { token } from '../../../utils/auth';
 
 const ArchivedRequests = () => {
   const [requests, setRequests] = useState([]);
-  const token = JSON.parse(sessionStorage.getItem('token'));
-  const current_user = JSON.parse(sessionStorage.getItem('user'));
 
   // get all my unfulfilled requests that the current user have.
   const getRequests = async (e) => {

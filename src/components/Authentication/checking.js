@@ -1,8 +1,8 @@
 import jwtDecode from 'jwt-decode'
+import { token } from '../../utils/auth';
 
 //function for removing token from sessionStorage after token expires
 export const checkingToken = () => {
-  const token = window.sessionStorage.getItem('token');
 
   if (token) {
     const decodedToken = jwtDecode(token);

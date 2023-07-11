@@ -4,6 +4,7 @@ import { Label, Textarea, Radio, FileInput, Button, TextInput } from 'flowbite-r
 import { MapPinIcon, DocumentIcon, DocumentTextIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import API_BASE_URL from '../../config/apiConfig';
+import { token } from '../../utils/auth';
 
 const MakeRequestForm = ({ setModalOn }) => {
   const [requestData, setRequestData] = useState("");
@@ -12,8 +13,6 @@ const MakeRequestForm = ({ setModalOn }) => {
   const [description, setDescription] = useState("");
   const [requestType, setRequestType] = useState("");
   const [images, setImages] = useState(null); // Store the selected image as a state
-
-  const token = JSON.parse(sessionStorage.getItem('token'));
   const current_user = JSON.parse(sessionStorage.getItem('user'));
 
   const handleCancelClick = () => {

@@ -4,11 +4,10 @@ import { Label, Button, TextInput } from "flowbite-react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
 import API_BASE_URL from '../../config/apiConfig';
+import { user, token } from '../../utils/auth'
 
 const PasswordUpdate = () => {
   const [loading, setLoading] = useState(false);
-  const token = JSON.parse(sessionStorage.getItem('token'));
-  const user = JSON.parse(sessionStorage.getItem('user'));
 
   const validationSchema = Yup.object({
     currentPassword: Yup.string().required('Current password is required'),

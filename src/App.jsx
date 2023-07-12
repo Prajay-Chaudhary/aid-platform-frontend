@@ -17,7 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import PasswordReseSendtLink from './pages/PasswordReseSendtLink';
 import FulfilledDetails from './pages/FulfilledDetails';
 import { token } from './utils/auth';
-import Footer from './components/Common/Footer';
+import DefaultFooter from './components/Common/DefaultFooter';
 
 function App() {
 
@@ -47,7 +47,7 @@ function App() {
             <Route exact path="/password-reset" element={<PasswordReseSendtLink />} />
             <Route path="/fulfilled-details/:id" element={token ? <FulfilledDetails /> : <Login />} />
           </Routes>
-          <Footer />
+          <DefaultFooter />
         </>
       </Router>
     </UserContext.Provider>

@@ -23,14 +23,11 @@ const MakeRequestForm = ({ setModalOn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     // Manual validation for address input
     if (!address) {
       toast.error("Please select an address");
       return;
     }
-
-
 
     const formData = new FormData(); // Create a new FormData object
     formData.append('request[owner_id]', current_user.id);
@@ -38,8 +35,7 @@ const MakeRequestForm = ({ setModalOn }) => {
     formData.append('request[title]', title);
     formData.append('request[description]', description);
     formData.append('request[request_type]', requestType);
-    formData.append('request[images]', images); // Append the image to the form data
-    console.log("form data", formData);
+    formData.append('request[images]', images);
 
     try {
       const res = await fetch(`${API_BASE_URL}/requests`, {
@@ -55,6 +51,16 @@ const MakeRequestForm = ({ setModalOn }) => {
         setRequestData(json);
         console.log("request data:", json);
         toast.success("Request has been created successfully!");
+
+        // Reset form inputs
+        setAddress(null);
+        setTitle("");
+        setDescription("");
+        setRequestType("");
+        setImages(null);
+
+        // Close the form
+        setModalOn(false);
       } else {
         const errorResponse = await res.json();
         console.log("Error response:", errorResponse);
@@ -64,7 +70,6 @@ const MakeRequestForm = ({ setModalOn }) => {
       console.error(err);
       toast.error("An error occurred. Please try again.");
     }
-
   };
 
   //192.168.1.170:5717

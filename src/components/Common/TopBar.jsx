@@ -31,7 +31,7 @@ const TopBar = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem('token');
-    toast.success("Logout successfully!");
+    toast.error("Logout successfully!");
 
     setTimeout(() => {
       window.location = '/login'; // Navigate to the login page after logout

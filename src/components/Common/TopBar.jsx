@@ -5,8 +5,7 @@ import MakeRequestForm from "../Requests/MakeRequestForm";
 import { PlusCircleIcon } from "@heroicons/react/20/solid";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from 'react-router-dom';
-
-
+import { toast } from 'react-toastify';
 
 const TopBar = () => {
   const token = JSON.parse(sessionStorage.getItem('token'));
@@ -32,7 +31,7 @@ const TopBar = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem('token');
-    //setUserData(null);
+    toast.success("Logout successfully!");
     window.location = '/login'; // Navigate to the login page after logout
   }
 

@@ -4,7 +4,7 @@ import { Footer } from 'flowbite-react';
 
 export default function DefaultFooter() {
   return (
-    <Footer container>
+    <Footer container className='fixed bottom-0'>
       <Footer.Copyright
         by="Aid Platform™"
         href="#"

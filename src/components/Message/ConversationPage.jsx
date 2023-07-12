@@ -88,7 +88,7 @@ function ConversationPage() {
     <>
       <div>
         {user_id ? (
-          <div className="p-2 md:p-6 min-h-screen">
+          <div className="p-2 md:p-6 min-h-screen mb-[95px] md:mb-0">
 
             <div className="p-3 bg-white-400 rounded-lg shadow-lg">
               <div className='flex space-x-2 justify-center'>

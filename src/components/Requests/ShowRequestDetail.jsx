@@ -159,7 +159,7 @@ const ShowRequestDetail = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row justify-end mr-6 py-4 items-center">
+      <div className="flex flex-row justify-end mr-6 py-4 items-center mb-[75px]">
         <div className='mr-2'>
           <Button
             size="lg"

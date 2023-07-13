@@ -31,7 +31,7 @@ const UnFulfilledRequests = () => {
   const handleSubmit = async (id) => {
 
     try {
-      const response = await fetch(`http://localhost:3001/requests/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/requests/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({ request_status: 'fulfilled' }),
         headers: {

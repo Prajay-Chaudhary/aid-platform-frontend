@@ -26,6 +26,7 @@
 - <a href="https://guides.rubyonrails.org/active_job_basics.html" target="_blank">Active jobs</a>
 - <a href="https://sidekiq.org/" target="_blank">Sidekiq for background jobs</a>
 - <a href="https://redis.io/" target="_blank">Redis</a>
+- <a href="https://aws.amazon.com/s3/" target="_blank">AWS S3</a>
 - <a href="https://tranquil-springs-32726-3204834d8936.herokuapp.com" target="_blank">Deployed Api</a>
 
 # Deployed By

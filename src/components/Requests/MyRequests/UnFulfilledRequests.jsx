@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'flowbite-react';
+import { toast } from 'react-toastify';
 import API_BASE_URL from '../../../config/apiConfig';
 import { token } from '../../../utils/auth';
 
@@ -45,6 +46,7 @@ const UnFulfilledRequests = () => {
       setRequests(newData)
 
       console.log("data passed for unfulfilled:", data)
+      toast.success("Request has been marked as fulfilled successfully!");
     } catch (error) {
       alert(" Please Try later ")
     }

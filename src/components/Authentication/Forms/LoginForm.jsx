@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { EyeIcon } from "@heroicons/react/24/outline";
-import { EyeSlashIcon } from "@heroicons/react/24/outline";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { Label, Button, Checkbox } from 'flowbite-react';
 
 const LoginForm = ({ handleLogin }) => {
@@ -35,6 +34,19 @@ const LoginForm = ({ handleLogin }) => {
     <>
       <div className="w-full h-screen flex items-center justify-center m-auto ">
         <div className="max-w-md w-full m-auto mt-20 md:mt-48 p-5 bg-white border drop-shadow-md hover:drop-shadow-2xl rounded-lg">
+          <div>
+            <div className="text-center mb-3">
+              <h1 className="text-red-500 font-bold mb-1">Quick Demo: Log in with these credentials</h1>
+              <p>
+                <span className="font-bold ml-2">Email:</span>
+                <span> test@gmail.com</span>
+              </p>
+              <p>
+                <span className="font-bold">Password:</span>
+                <span> password</span>
+              </p>
+            </div>
+          </div>
           <h2 className="font-medium text-2xl text-center">Login</h2>
           <Formik
             initialValues={{ email: '', password: '' }}

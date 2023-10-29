@@ -34,7 +34,7 @@ function LoginMain() {
         toast.success('Login successfull!');
         // Delay the redirect to the request page by 1 second
         setTimeout(() => {
-          window.location = '/login';
+          window.location = '/requests';
         }, 1000);
       } else {
         console.error('Login failed');

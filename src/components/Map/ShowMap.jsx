@@ -16,6 +16,7 @@ import {
   useMapEvents
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import FavoriteButton from "../Favorite/FavoriteButton";
 
 const ShowMap = () => {
   //mapRef is used to reference the MapContainer component
@@ -169,6 +170,9 @@ const ShowMap = () => {
                           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {request_type}
                           </h5>
+                          <div className="request-item">
+                            <FavoriteButton requestId={request.id} />
+                          </div>
                         </div>
                         <div>
                           <p className="font-normal text-gray-700 dark:text-gray-400">{title}</p>

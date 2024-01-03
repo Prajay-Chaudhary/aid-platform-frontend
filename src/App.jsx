@@ -18,6 +18,7 @@ import PasswordReseSendtLink from './pages/PasswordReseSendtLink';
 import FulfilledDetails from './pages/FulfilledDetails';
 import { token } from './utils/auth';
 import DefaultFooter from './components/Common/DefaultFooter';
+import Favourite from './pages/Favourite';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/update-password" element={token ? <ChangePassword /> : <Login />} />
             <Route exact path="/password-reset" element={<PasswordReseSendtLink />} />
             <Route path="/fulfilled-details/:id" element={token ? <FulfilledDetails /> : <Login />} />
+            <Route path="/favourites" element={token ? <Favourite /> : <Login />} />
           </Routes>
           <DefaultFooter />
         </>

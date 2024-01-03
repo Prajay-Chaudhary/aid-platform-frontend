@@ -25,6 +25,9 @@ const TopBar = () => {
     navigate('/profile') // redirect to my profile page
   }
 
+  const redirectToFavourite = () => {
+    navigate('/favourites') // redirect to my favourites page
+  }
   const redirectToChangePassword = () => {
     navigate('update-password') // redirect to Change Password page
   }
@@ -38,7 +41,6 @@ const TopBar = () => {
     }, 2000);
 
   }
-
 
 
   return (
@@ -68,6 +70,9 @@ const TopBar = () => {
               </Dropdown.Header>
               <Dropdown.Item onClick={redirectToProfile}>
                 <p className="txt-color">My Profile</p>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={redirectToFavourite}>
+                <p className="txt-color">Favourites</p>
               </Dropdown.Item>
               <Dropdown.Item onClick={redirectToChangePassword}>
                 <p className="txt-color">Change Password</p>
